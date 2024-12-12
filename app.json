@@ -1,26 +1,33 @@
 {
   "expo": {
-    "name": "sefatapp_app",
-    "slug": "sefatapp_app",
-    "version": "1.0.0",
+    "name": "SefaTapp",
+    "slug": "SefaTapp",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "sefatapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.shahriyar4473.sefatapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.shahriyar4473.sefatapp"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3720cd80-55cf-4def-8cc4-f883566fa73b"
+      }
     },
     "plugins": [
       "expo-router",

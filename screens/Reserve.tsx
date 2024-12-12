@@ -1,0 +1,129 @@
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  SafeAreaView,
+} from "react-native";
+import React from "react";
+import { typography } from "@/constants/Typography";
+import Header from "@/components/Header";
+import UserHeader from "@/components/UserHeader";
+import Colors from "@/constants/Colors";
+import { useGetClinicsQuery } from "@/store/appSlice";
+import ReserveCard from "@/components/ReserveCard";
+
+export default function Clinics() {
+  const { data, error, isLoading } = useGetClinicsQuery({});
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <Header />
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Rezervlərim</Text>
+      </View>
+      <View style={styles.userHeader}>
+        <UserHeader />
+      </View>
+
+      <View style={styles.container}>
+        <Text style={styles.text}>
+          Dəyərli pasiyent, xəstəxanaya yaxınlaşan zaman tətbiqdən
+          rezervasiyanızı göstərərək deyilən tarixdə həkimə yaxınlaşmağınız
+          tələb olunur!
+        </Text>
+        <ScrollView
+          contentContainerStyle={styles.scrollContainer}
+          showsVerticalScrollIndicator={false}
+          scrollEnabled
+        >
+          <ReserveCard />
+          <ReserveCard />
+          <ReserveCard />
+        </ScrollView>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+    display: "flex",
+    flexDirection: "column",
+    gap: 18,
+    width: "100%",
+    flex: 1,
+  },
+  safeArea: {
+    height: "100%",
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  headerText: {
+    ...typography.titleMedium400,
+    color: Colors.light.lightGreenActive,
+  },
+  header: {
+    paddingVertical: 12,
+    backgroundColor: Colors.light.green,
+    alignItems: "center",
+  },
+  headerTitleContainer: {
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
+  greetingContainer: {
+    flex: 1,
+    marginLeft: 10,
+  },
+  greeting: {
+    fontSize: 18,
+    color: "#0F312D",
+  },
+  username: {
+    fontSize: 16,
+    color: "#0F312D",
+  },
+  searchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 4,
+    paddingVertical: 1,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#0F312D",
+  },
+  userInfoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
+  profileImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  columnWrapper: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    gap: 10,
+  },
+  userHeader: {
+    paddingTop: 20,
+    // paddingBottom: 36,
+  },
+  text: {
+    ...typography.subhead400,
+  },
+
+  scrollContainer: {
+    paddingVertical: 20,
+    gap: 20,
+  },
+});
