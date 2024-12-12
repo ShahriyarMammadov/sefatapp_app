@@ -10,7 +10,6 @@ import BurgerMenu from "@/components/BurgerMenu";
 import { useSelector } from "react-redux";
 import Header from "@/components/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
-import AnalysisCard from "@/components/AnalysisCard";
 import { typography } from "@/constants/Typography";
 
 const ReservationScreen = () => {
@@ -18,15 +17,20 @@ const ReservationScreen = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container}>
+      {/* <ScrollView style={styles.container}> */}
       {isBurgerOpen ? <BurgerMenu /> : null}
         <Header />
         <View>
-        <Text style={styles.Text}>Salam, Dr. Walter</Text>
+        <Text style={styles.Text}>Salam, Dr.Aydin</Text>
+        <Text>{''}</Text>
+        <Text>{''}</Text>
+        <Text style={styles.Text}>İmtina et</Text>
         </View>
-        <AnalysisCard/>
+        <View>
+            
+        </View>
+     
         
-      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   Text: {
-    ...typography.titleMedium400,
+    ...typography.titleMedium700,
     color: "#1F8871",
     textAlign: "center",
   },

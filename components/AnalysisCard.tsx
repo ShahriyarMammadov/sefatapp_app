@@ -1,6 +1,11 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet, Button } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { SvgXml } from "react-native-svg";
+import { Hour } from "@/assets/svg/aysun";
+import CustomButton from "./CustomButton";
+import { Colors } from "react-native/Libraries/NewAppScreen";
+import { typography } from "@/constants/Typography";
 
 const DoctorCard = () => {
   return (
@@ -10,22 +15,24 @@ const DoctorCard = () => {
         source={require("@/assets/images/dr.doctor.png")}
       />
       <View style={styles.infoContainer}>
-        <Text style={styles.doctorName}>Dr. Jalə</Text>
-        <Text style={styles.specialty}>İxtisas: Psixoloq</Text>
-        <Text style={styles.prescription}>Reseptiniz göndərilib.</Text>
-        <Text style={styles.service}>Konsultasiya xidməti: 60 azn</Text>
-        <Text style={styles.clinic}>Klinika: Bonadea</Text>
+        <Text style={styles.doctorName}>67352</Text>
+        <Text style={styles.specialty}>Rezerv təsdiq olunub</Text>
+        <Text style={styles.prescription}>Xidmət növü : Konsultasiya</Text>
+        <Text style={styles.service}>Klinika: Bonadea</Text>
+        {''}
+        <Text style={styles.clinic}>Ödəniş : Ödənilib</Text>
 
-        <TouchableOpacity style={styles.uploadButton}>
-          <Text style={styles.uploadButtonText}>
-            Analiz nəticənizi yükləyin
-          </Text>
-          <FontAwesome name="download" size={18} color="#14413c" />
-        </TouchableOpacity>
         <View style={styles.dateContainer}>
-          <FontAwesome name="refresh" size={18} color="#14413c" />
+        <SvgXml xml={Hour} />
           <Text style={styles.dateText}>15/09, Saat : 14:00</Text>
         </View>
+        <Text>{''}</Text>
+        <CustomButton
+              title="imtina et"
+              buttonStyles={styles.btn}
+              textStyles={styles.btnText}
+            />
+
       </View>
     </View>
   );
@@ -34,10 +41,11 @@ const DoctorCard = () => {
 const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: "row",
-    backgroundColor: "#d9e7e3",
-    borderRadius: 15,
+    backgroundColor: " #226D64",
+    borderRadius: 19,
     padding: 10,
     alignItems: "center",
+    height: "50%",
   },
   profileImage: {
     width: 80,
@@ -52,24 +60,25 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     color: "#0f312d",
+    alignItems: "center",
   },
   specialty: {
-    fontSize: 14,
+    fontSize: 13,
+    fontWeight: "bold",
     color: "#0f312d",
   },
   prescription: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#0f312d",
+    fontSize: 12,
+    color: "#226D64",
     marginVertical: 5,
   },
   service: {
     fontSize: 14,
-    color: "#0f312d",
+    color: "#226D64",
   },
   clinic: {
     fontSize: 14,
-    color: "#0f312d",
+    color: "#226D64",
   },
   uploadButton: {
     flexDirection: "row",
@@ -99,7 +108,7 @@ const styles = StyleSheet.create({
   },
   drdoctorImg: {
     width: 170,
-    height: "115%",
+    height: "120%",
     resizeMode: "cover",
     borderRadius: 9,
     borderTopLeftRadius: 18,
@@ -107,6 +116,23 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
     alignItems: "flex-start",
+  },
+  btn: {
+    backgroundColor: "#226D64",
+    borderWidth: 1,
+    borderColor: "#226D64",
+    paddingVertical: 10,
+    width: "50%", 
+    maxWidth: 160, 
+    minWidth: 100, 
+    borderRadius: 12,
+    alignSelf: "flex-end",
+    marginRight: 40,
+  },
+  
+  btnText: {
+    color:"#FFFFFF",
+    ...typography.subhead400,
   },
 });
 

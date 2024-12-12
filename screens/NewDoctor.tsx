@@ -87,7 +87,9 @@ const ProfileScreen = () => {
           >
             <FontAwesome name="home" size={24} color="#9DB2CE" />
           </TouchableOpacity>
-          <FontAwesome name="bell" size={24} color="#1F887170" />
+          <TouchableOpacity onPress={() => router.replace("/(auth)/reserve-2")}>
+            <FontAwesome name="bell" size={24} color="#1F887170" />
+          </TouchableOpacity>
           <TouchableOpacity
             onPress={() => router.replace("/(auth)/statistics-page")}
           >

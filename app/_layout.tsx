@@ -263,6 +263,38 @@ function RootLayoutNav() {
               gestureDirection: "horizontal",
             }}
           />
+            <Stack.Screen
+            name="(auth)/reserve-2"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+             <Stack.Screen
+            name="(auth)/patient"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+              <Stack.Screen
+            name="(auth)/reserve-3"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+              <Stack.Screen
+            name="(auth)/comments-page"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
 
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: "modal" }} />

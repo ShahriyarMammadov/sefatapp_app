@@ -31,7 +31,9 @@ const Header = ({ burger }: any) => {
         <SvgXml xml={logo} />
       </View>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => dispatch(toggleBurger())}>
+        <TouchableOpacity onPress={() => {          
+          dispatch(toggleBurger())
+        }}>
           <SvgXml xml={burgerIcon} />
         </TouchableOpacity>
       </View>

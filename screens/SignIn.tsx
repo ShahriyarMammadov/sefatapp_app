@@ -25,6 +25,7 @@ import {
 } from "@/assets/svg/xml";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLoginMutation } from "@/store/appSlice";
+import { StatusBar } from "expo-status-bar";
 
 interface LoginResponse {
   access_token: string;
@@ -117,6 +118,8 @@ const SignIn: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar style="dark" />
+
       <Header />
       <TouchableWithoutFeedback onPress={handleOutsidePress}>
         <View style={styles.container}>
@@ -226,6 +229,7 @@ export default SignIn;
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+    marginTop: 40,
   },
   container: {
     flex: 1,
