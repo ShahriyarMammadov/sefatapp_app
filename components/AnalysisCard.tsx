@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet, Button } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Button,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { SvgXml } from "react-native-svg";
 import { Hour } from "@/assets/svg/aysun";
@@ -14,25 +21,29 @@ const DoctorCard = () => {
         style={styles.drdoctorImg}
         source={require("@/assets/images/dr.doctor.png")}
       />
+      <CustomButton
+        title="Familiya"
+        textStyles={styles.btnText}
+        buttonStyles={styles.imageBtn}
+      />
       <View style={styles.infoContainer}>
         <Text style={styles.doctorName}>67352</Text>
         <Text style={styles.specialty}>Rezerv təsdiq olunub</Text>
         <Text style={styles.prescription}>Xidmət növü : Konsultasiya</Text>
         <Text style={styles.service}>Klinika: Bonadea</Text>
-        {''}
+        {""}
         <Text style={styles.clinic}>Ödəniş : Ödənilib</Text>
 
         <View style={styles.dateContainer}>
-        <SvgXml xml={Hour} />
+          <SvgXml xml={Hour} />
           <Text style={styles.dateText}>15/09, Saat : 14:00</Text>
         </View>
-        <Text>{''}</Text>
+        <Text>{""}</Text>
         <CustomButton
-              title="imtina et"
-              buttonStyles={styles.btn}
-              textStyles={styles.btnText}
-            />
-
+          title="imtina et"
+          buttonStyles={styles.btn}
+          textStyles={styles.btnText}
+        />
       </View>
     </View>
   );
@@ -40,21 +51,23 @@ const DoctorCard = () => {
 
 const styles = StyleSheet.create({
   cardContainer: {
+    display: "flex",
+    gap: 18,
     flexDirection: "row",
-    backgroundColor: " #226D64",
-    borderRadius: 19,
-    padding: 10,
     alignItems: "center",
-    height: "50%",
-  },
-  profileImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    marginRight: 10,
+    marginBottom: 20,
+    borderRadius: 22,
+    backgroundColor: "#FFFFFF",
+    shadowColor: "rgba(0, 0, 0, 0.12)",
+    shadowOffset: {
+      width: 4,
+      height: 4,
+    },
+    shadowRadius: 15.600000381469727,
+    shadowOpacity: 1,
   },
   infoContainer: {
-    flex: 1,
+    // padding: 19,
   },
   doctorName: {
     fontSize: 18,
@@ -66,6 +79,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "bold",
     color: "#0f312d",
+    overflow: 'hidden'
   },
   prescription: {
     fontSize: 12,
@@ -107,8 +121,8 @@ const styles = StyleSheet.create({
     color: "#0f312d",
   },
   drdoctorImg: {
-    width: 170,
-    height: "120%",
+    width: 201,
+    height: 203,
     resizeMode: "cover",
     borderRadius: 9,
     borderTopLeftRadius: 18,
@@ -122,17 +136,24 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#226D64",
     paddingVertical: 10,
-    width: "50%", 
-    maxWidth: 160, 
-    minWidth: 100, 
+    width: "50%",
+    maxWidth: 160,
+    minWidth: 100,
     borderRadius: 12,
     alignSelf: "flex-end",
-    marginRight: 40,
+    marginRight: 0,
   },
-  
   btnText: {
-    color:"#FFFFFF",
+    color: "#FFFFFF",
     ...typography.subhead400,
+  },
+  imageBtn: {
+    position: "absolute",
+    left: 20,
+    bottom: 0,
+    width: 133,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
   },
 });
 
