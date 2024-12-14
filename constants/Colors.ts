@@ -13,6 +13,10 @@ export default {
     darkGreenHover: '#14413c',
     darkGreenActive: '#0f312d',
     darker: '#0c2623',
+    background: "#fff",
+    text: "#fff",
+
+
     ///////////////////
     errorRed: '#ce0f0f',
   },

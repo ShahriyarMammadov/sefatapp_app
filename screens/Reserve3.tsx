@@ -2,8 +2,8 @@ import React from "react";
 import {
     View,
     Text,
-  ScrollView,
-  StyleSheet,
+    ScrollView,
+    StyleSheet,
 } from "react-native";
 import { RootState } from "@/store/store";
 import BurgerMenu from "@/components/BurgerMenu";
@@ -16,37 +16,42 @@ import { typography } from "@/constants/Typography";
 const ReservationScreen = () => {
     const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
 
-  return (
-    <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container}>
-      {isBurgerOpen ? <BurgerMenu /> : null}
-        <Header />
-        <View>
-        <Text style={styles.Text}>Salam, Dr. Walter</Text>
-        </View>
-        <AnalysisCard/>
-        
-      </ScrollView>
-    </SafeAreaView>
-  );
+    return (
+        <SafeAreaView style={styles.safeArea}>
+            <ScrollView style={styles.container}>
+                {isBurgerOpen ? <BurgerMenu /> : null}
+                <Header />
+                <View>
+                    <Text style={[styles.Text, { marginBottom: 20 }]}>
+                        Salam, Dr.Aydin
+                    </Text>
+                </View>
+
+                <AnalysisCard />
+                <AnalysisCard />
+                <AnalysisCard />
+                <AnalysisCard />
+            </ScrollView>
+        </SafeAreaView>
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-    paddingHorizontal: 16,
-  },
-  
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  Text: {
-    ...typography.titleMedium400,
-    color: "#1F8871",
-    textAlign: "center",
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#FFFFFF",
+        paddingHorizontal: 14,
+    },
+
+    safeArea: {
+        flex: 1,
+        backgroundColor: "#fff",
+    },
+    Text: {
+        ...typography.titleMedium400,
+        color: "#1F8871",
+        textAlign: "center",
+    },
 });
 
 export default ReservationScreen;
