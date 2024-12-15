@@ -22,17 +22,14 @@ export default function FirstPage() {
         </View>
         <View style={styles.buttonGroup}>
           <CustomButton
-            title="Pasiyent kimi daxil ol"
+            title=" Həkim kimi daxil ol"
             onPress={() => router.replace("/(auth)/sign-in")}
           />
           <CustomButton
-            title="Həkim kimi daxil ol"
-            onPress={() => router.replace("/(tabs)/registration")}
+            title="Pasiyent kimi daxil ol"
+            onPress={() => router.replace("/(auth)/user-patient")}
           />
-          <CustomButton
-            title="Qeydiyyatdan keçin"
-            onPress={() => router.replace("/(auth)/sign-up")}
-          />
+        
           <Button
             title="Qonaq kimi davam et"
             color={Colors.light.green}

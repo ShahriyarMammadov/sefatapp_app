@@ -120,7 +120,7 @@ const SignIn: React.FC = () => {
     <SafeAreaView style={styles.safeArea}>
       <StatusBar style="dark" />
 
-      <Header />
+      <Header disabledBurger />
       <TouchableWithoutFeedback onPress={handleOutsidePress}>
         <View style={styles.container}>
           <View style={styles.inputsGroup}>

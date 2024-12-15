@@ -25,7 +25,7 @@ import Animated, {
 } from "react-native-reanimated";
 // lottie
 import Home from "@/screens/Home";
-import Profile from "@/screens/Registration";
+import Profile from "@/screens/User";
 import Basket from "@/screens/Basket";
 import Favorites from "@/screens/Favorites";
 import Notifications from "@/screens/Notifications";
@@ -51,7 +51,7 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <NavigationContainer independent={true}>
+      <NavigationContainer >
         <Tab.Navigator tabBar={(props) => <AnimatedTabBar {...props} />}>
           <Tab.Screen
             name="Home"
