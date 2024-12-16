@@ -6,12 +6,16 @@ import { useNavigation, useRouter } from "expo-router";
 import { useDispatch } from "react-redux";
 import { toggleBurger } from "@/store/burgerSlice";
 
+interface IHedaer {
+  disabledBurger?: boolean;
+}
+
 const { width } = Dimensions.get("window");
 const BurgerMenu = () => {
   const dispatch = useDispatch();
 };
 
-const Header = ({ burger }: any) => {
+const Header = ({ disabledBurger }: IHedaer) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const router = useRouter();
@@ -31,10 +35,12 @@ const Header = ({ burger }: any) => {
         <SvgXml xml={logo} />
       </View>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => {          
-          dispatch(toggleBurger())
-        }}>
-          <SvgXml xml={burgerIcon} />
+        <TouchableOpacity
+          onPress={() => {
+            dispatch(toggleBurger());
+          }}
+        >
+          {disabledBurger ? null : <SvgXml xml={burgerIcon} />}
         </TouchableOpacity>
       </View>
     </View>

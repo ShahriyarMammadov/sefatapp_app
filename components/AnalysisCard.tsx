@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  Button,
-} from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+
 import { SvgXml } from "react-native-svg";
 import { Hour } from "@/assets/svg/aysun";
 import CustomButton from "./CustomButton";
@@ -28,15 +21,29 @@ const DoctorCard = () => {
       />
       <View style={styles.infoContainer}>
         <Text style={styles.doctorName}>67352</Text>
-        <Text style={styles.specialty}>Rezerv təsdiq olunub</Text>
-        <Text style={styles.prescription}>Xidmət növü : Konsultasiya</Text>
-        <Text style={styles.service}>Klinika: Bonadea</Text>
+        <Text style={styles.specialty} numberOfLines={1} ellipsizeMode="tail">
+          Rezerv təsdiq olunub
+        </Text>
+        <Text
+          style={styles.prescription}
+          numberOfLines={1}
+          ellipsizeMode="tail"
+        >
+          Xidmət növü : Konsultasiya
+        </Text>
+        <Text style={styles.service} numberOfLines={1} ellipsizeMode="tail">
+          Klinika: Bonadea
+        </Text>
         {""}
-        <Text style={styles.clinic}>Ödəniş : Ödənilib</Text>
+        <Text style={styles.clinic} numberOfLines={1} ellipsizeMode="tail">
+          Ödəniş : Ödənilib
+        </Text>
 
         <View style={styles.dateContainer}>
           <SvgXml xml={Hour} />
-          <Text style={styles.dateText}>15/09, Saat : 14:00</Text>
+          <Text style={styles.dateText} numberOfLines={1} ellipsizeMode="tail">
+            15/09, Saat : 14:00
+          </Text>
         </View>
         <Text>{""}</Text>
         <CustomButton
@@ -79,12 +86,15 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "bold",
     color: "#0f312d",
-    overflow: 'hidden'
+    overflow: "hidden",
+    width: 140,
   },
   prescription: {
     fontSize: 12,
     color: "#226D64",
     marginVertical: 5,
+    overflow: "hidden",
+    width: 140,
   },
   service: {
     fontSize: 14,

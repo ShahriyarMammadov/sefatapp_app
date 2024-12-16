@@ -15,52 +15,52 @@ import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const ReservationScreen = () => {
-    const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
+  const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container}>
-      {isBurgerOpen ? <BurgerMenu /> : null}
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+        {isBurgerOpen ? <BurgerMenu /> : null}
         <Header />
-        <Text style={styles.title}>Rezervasiyalar</Text>
-        <Text style={styles.subtitle}>Rezervasiya nömrəsi 75864</Text>
-        <Text style={styles.description}>
-          Filan pasiyentin nəticəsini yoxlamaq
-        </Text>
-        <View style={styles.form}>
-          <TextInput style={styles.input} placeholder="Ad Soyad" />
-          <TextInput
-            style={styles.input}
-            placeholder="Mobil nömrə"
-            keyboardType="phone-pad"
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Fin kod"
-            
-          />
-          <TextInput
-            style={[styles.input, styles.textArea]}
-            placeholder="Şikayəti"
-            multiline
-          />
-          <TouchableOpacity style={styles.fileUpload}>
-            <FontAwesome name="upload" size={18} color="#226D64" />
-            <Text style={styles.fileUploadText}>
-              Analiz nəticəsini jpg formatında yerləşdirin
-            </Text>
-          </TouchableOpacity>
-          <TextInput style={styles.input} placeholder="Cavabınızı qeyd edin" />
-          <View style={styles.responseIcons}>
-            <FontAwesome name="paperclip" size={18} color="#226D64" />
-            <FontAwesome name="image" size={18} color="#226D64" />
-            <MaterialIcons name="send" size={20} color="#226D64" />
+        <View style={styles.main}>
+          <Text style={styles.title}>Rezervasiyalar</Text>
+          <Text style={styles.subtitle}>Rezervasiya nömrəsi 75864</Text>
+          <Text style={styles.description}>
+            Filan pasiyentin nəticəsini yoxlamaq
+          </Text>
+          <View style={styles.form}>
+            <TextInput style={styles.input} placeholder="Ad Soyad" />
+            <TextInput
+              style={styles.input}
+              placeholder="Mobil nömrə"
+              keyboardType="phone-pad"
+            />
+            <TextInput style={styles.input} placeholder="Fin kod" />
+            <TextInput
+              style={[styles.input, styles.textArea]}
+              placeholder="Şikayəti"
+              multiline
+            />
+            <TouchableOpacity style={styles.fileUpload}>
+              <FontAwesome name="upload" size={18} color="#226D64" />
+              <Text style={styles.fileUploadText}>
+                Analiz nəticəsini jpg formatında yerləşdirin
+              </Text>
+            </TouchableOpacity>
+            <TextInput
+              style={styles.input}
+              placeholder="Cavabınızı qeyd edin"
+            />
+            <View style={styles.responseIcons}>
+              <FontAwesome name="paperclip" size={18} color="#226D64" />
+              <FontAwesome name="image" size={18} color="#226D64" />
+              <MaterialIcons name="send" size={20} color="#226D64" />
+            </View>
+            <TouchableOpacity style={styles.submitButton}>
+              <Text style={styles.submitText}>Təsdiqlə</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.submitButton}>
-            <Text style={styles.submitText}>Təsdiqlə</Text>
-          </TouchableOpacity>
         </View>
-
         {/* Footer */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>Ödəniş üsulu: Kartla ödəniş</Text>
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    paddingHorizontal: 16,
   },
+  main: { paddingHorizontal: 16 },
   header: {
     flexDirection: "row",
     alignItems: "center",

@@ -12,11 +12,18 @@ import Header from "@/components/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
+import { useSelector } from "react-redux";
+import ProfileScreen from "./NewDoctor";
+import Burger from "@/components/Burger";
+import { RootState } from "@/store/store";
 
-const ProfileScreen = () => {
+const UserScreen = () => {
+  const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView style={styles.container}>
+        {isBurgerOpen ? <Burger /> : null}
         <Header />
         <Text style={styles.greeting}>Salam, Dr. Walter</Text>
         <View style={styles.main}>
@@ -41,26 +48,27 @@ const ProfileScreen = () => {
           <CustomInput label="Fin kod" placeholderText="45962" />
 
           <CustomInput
-            label="Mobil nömrə"
+            label="Şəhər"
             placeholderText="San Jose, California, USA"
           />
 
-          <CustomInput label="Ünvan" placeholderText="San Jose" />
+          <CustomInput label="Rayon" placeholderText="San Jose " />
 
-          <CustomInput label="İş yeri" placeholderText="USA" />
+          <CustomInput label="Küçə" placeholderText="USA" />
 
           <CustomInput
-            label="İxtisasım"
+            label="Mənzil"
             placeholderText="San Jose, California, USA"
           />
 
           <CustomButton
-            title={"Save"}
+            title={"Yadda saxla"}
             buttonStyles={{
-              marginTop: 15,
+              marginTop: 19,
               marginBottom: 20,
-              width: 150,
+              width: 200,
               alignSelf: "center",
+              color: "#226D64",
             }}
           />
         </View>
@@ -160,4 +168,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileScreen;
+export default UserScreen;

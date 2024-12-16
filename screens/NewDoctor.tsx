@@ -27,79 +27,83 @@ const ProfileScreen = () => {
         /> */}
         {/* <Text style={styles.greeting}>Salam, Dr. Walter</Text>
       </View> */}
-        <View style={styles.profileSection}>
-          <Image
-            source={require("@/assets/images/dr.walter.png")}
-            style={styles.profileImage}
-          />
-          <TouchableOpacity style={styles.editIcon}>
-            <FontAwesome name="pencil" size={16} color="#ffffff" />
-          </TouchableOpacity>
-        </View>
+        <View style={styles.main}>
+          <View style={styles.profileSection}>
+            <Image
+              source={require("@/assets/images/dr.walter.png")}
+              style={styles.profileImage}
+            />
+            <TouchableOpacity activeOpacity={0.8} style={styles.editIcon}>
+              <FontAwesome name="pencil" size={16} color="#ffffff" />
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.infoSection}>
-          <Text style={styles.label}>Ad</Text>
-          <Text style={styles.info}>Fidan Haqverdiyeva</Text>
+          <View style={styles.infoSection}>
+            <Text style={styles.label}>Ad</Text>
+            <Text style={styles.info}>Fidan Haqverdiyeva</Text>
 
-          <Text style={styles.label}>Cins</Text>
-          <Text style={styles.info}>Qadın</Text>
+            <Text style={styles.label}>Cins</Text>
+            <Text style={styles.info}>Qadın</Text>
 
-          <Text style={styles.label}>Doğum Tarixi</Text>
-          <Text style={styles.info}>Avqust 27, 1999</Text>
+            <Text style={styles.label}>Doğum Tarixi</Text>
+            <Text style={styles.info}>Avqust 27, 1999</Text>
 
-          <Text style={styles.label}>Milliyyət</Text>
-          <Text style={styles.info}>Azərbaycan</Text>
+            <Text style={styles.label}>Milliyyət</Text>
+            <Text style={styles.info}>Azərbaycan</Text>
 
-          <Text style={styles.label}>İxtisas</Text>
-          <Text style={styles.info}>Stomatoloq</Text>
+            <Text style={styles.label}>İxtisas</Text>
+            <Text style={styles.info}>Stomatoloq</Text>
 
-          <Text style={styles.label}>İş Yeri</Text>
-          <Text style={styles.info}>Yeni Klinika</Text>
-        </View>
+            <Text style={styles.label}>İş Yeri</Text>
+            <Text style={styles.info}>Yeni Klinika</Text>
+          </View>
 
-        <View style={styles.infoSection}>
-          <Text style={styles.label}>Telefon Nömrəsi</Text>
-          <Text style={styles.info}>09034867566</Text>
+          <View style={styles.infoSection}>
+            <Text style={styles.label}>Telefon Nömrəsi</Text>
+            <Text style={styles.info}>09034867566</Text>
 
-          <Text style={styles.label}>Email</Text>
-          <Text style={styles.info}>tomilola@me.com</Text>
-        </View>
+            <Text style={styles.label}>Email</Text>
+            <Text style={styles.info}>tomilola@me.com</Text>
+          </View>
 
-        <View style={styles.addressSection}>
-          <Text style={styles.text}>Address</Text>
+          <View style={styles.addressSection}>
+            <Text style={styles.text}>Address</Text>
 
-          <Text style={styles.label}>Address Line</Text>
-          <Text style={styles.info}>No 35 Jimmy Ebi Küçəsi</Text>
+            <Text style={styles.label}>Address Line</Text>
+            <Text style={styles.info}>No 35 Jimmy Ebi Küçəsi</Text>
 
-          <Text style={styles.label}>Şəhər</Text>
-          <Text style={styles.info}>Yenagoa</Text>
+            <Text style={styles.label}>Şəhər</Text>
+            <Text style={styles.info}>Yenagoa</Text>
 
-          <Text style={styles.label}>Ştat</Text>
-          <Text style={styles.info}>Bayelsa</Text>
+            <Text style={styles.label}>Ştat</Text>
+            <Text style={styles.info}>Bayelsa</Text>
 
-          <Text style={styles.label}>Ölkə</Text>
-          <Text style={styles.info}>Nigeriya</Text>
-        </View>
+            <Text style={styles.label}>Ölkə</Text>
+            <Text style={styles.info}>Nigeriya</Text>
+          </View>
 
-        <View style={styles.bottomNav}>
-          <TouchableOpacity
-            onPress={() => router.replace("/(auth)/comment-page")}
-          >
-            <FontAwesome name="home" size={24} color="#9DB2CE" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.replace("/(auth)/reserve-2")}>
-            <FontAwesome name="bell" size={24} color="#1F887170" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => router.replace("/(auth)/statistics-page")}
-          >
-            <FontAwesome name="cog" size={24} color="#1F887170" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => router.replace("/(auth)/person-profile")}
-          >
-            <FontAwesome name="user" size={24} color="#1F887170" />
-          </TouchableOpacity>
+          <View style={styles.bottomNav}>
+            <TouchableOpacity
+              onPress={() => router.replace("/(auth)/comment-page")}
+            >
+              <FontAwesome name="home" size={24} color="#9DB2CE" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.replace("/(auth)/reserve-2")}
+            >
+              <FontAwesome name="bell" size={24} color="#1F887170" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.replace("/(auth)/statistics-page")}
+            >
+              <FontAwesome name="cog" size={24} color="#1F887170" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.replace("/(auth)/person-profile")}
+            >
+              <FontAwesome name="user" size={24} color="#1F887170" />
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -109,12 +113,14 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
     backgroundColor: "#fff",
   },
   safeArea: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  main: {
+    paddingHorizontal: 16,
   },
   header: {
     alignItems: "center",
@@ -132,7 +138,6 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: "500",
     textAlign: "center",
-    lineHeight: 25,
   },
   menuIcon: {
     position: "absolute",
