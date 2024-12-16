@@ -1,5 +1,6 @@
-import Home from "@/screens/Home";
+import {Text} from "react-native"
 
 export default function home() {
-  return <Home />;
+  return <Text>hello</Text>;
 }
+
