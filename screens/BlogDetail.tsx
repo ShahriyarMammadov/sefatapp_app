@@ -6,18 +6,31 @@ import {
   Text,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Colors from "@/constants/Colors";
 import { typography } from "@/constants/Typography";
 import { router, useGlobalSearchParams } from "expo-router";
-import UserHeader from "@/components/UserHeader";
 import Header from "@/components/Header";
-import { blogs } from "@/constants/BlogData";
 import CustomButton from "@/components/CustomButton";
+import axios from "axios";
 
 const BlogDetail = () => {
-  const { blogsId } = useGlobalSearchParams<any>();
-  const selectedBlog = blogs.find((item) => item.id === parseInt(blogsId));
+  const [blogDetail, setBlogDetail] = useState({});
+  const [loading, setLoading] = useState(true);
+  const getBlogDetailData = async () => {
+    try {
+      const { data } = await axios.get(
+        `https://sefatapp.up.railway.app/blogs/66fba0c2f18a0a7ba2cfa8ed`
+      );
+      setBlogDetail(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getBlogDetailData();
+  }, []);
   return (
     <SafeAreaView style={styles.safeArea}>
       <Header />
@@ -26,27 +39,38 @@ const BlogDetail = () => {
       </View>
 
       <View style={styles.container}>
-        <View style={styles.userHeader}>
-          <UserHeader />
-        </View>
-        <ScrollView
-          contentContainerStyle={styles.scrollContainer}
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.banner}>
-            <Image source={selectedBlog?.image} style={styles.bannerImg} />
-          </View>
-          <Text style={styles.title}>{selectedBlog?.title}</Text>
-          <Text style={styles.description}>{selectedBlog?.description}</Text>
-          <View style={{ alignSelf: "flex-end" }}>
-            <CustomButton
-              title="Digər bloga keçid edin"
-              buttonStyles={{ width: 200 }}
-              textStyles={{ ...typography.subhead400 }}
-              onPress={() => router.replace("/(dashboard)/blogs/blog")}
-            />
-          </View>
-        </ScrollView>
+        {loading ? (
+          <Text>Loading</Text>
+        ) : (
+          <ScrollView
+            contentContainerStyle={styles.scrollContainer}
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.banner}>
+              <Image
+                source={{ uri: blogDetail?.imageURL }}
+                style={styles.bannerImg}
+              />
+            </View>
+            <Text style={styles.title}>{blogDetail?.name}</Text>
+            <Text style={styles.description}>{blogDetail?.description}</Text>
+            <View style={{ alignSelf: "flex-end" }}>
+              <CustomButton
+                title="Digər bloga keçid edin"
+                buttonStyles={{ width: 200 }}
+                textStyles={{ ...typography.subhead400 }}
+                onPress={() => router.replace("/(dashboard)/blogs/blog")}
+              />
+              <CustomButton
+                title={"Refresh"}
+                onPress={() => {
+                  setLoading(true);
+                  getBlogDetailData();
+                }}
+              />
+            </View>
+          </ScrollView>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -62,6 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
+    marginTop: 20,
   },
   scrollContainer: {
     flexGrow: 1,
