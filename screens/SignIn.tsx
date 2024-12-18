@@ -107,7 +107,8 @@ const SignIn: React.FC = () => {
         }
       } catch (error) {
         console.log(error);
-        Alert.alert("Login xəta");
+          Alert.alert(error.data.message )
+        
       }
     }
   };
@@ -174,9 +175,9 @@ const SignIn: React.FC = () => {
             </View>
             <CustomButton
               title="Daxil ol"
-              // onPress={handleSignIn}
+              onPress={handleSignIn}
               loading={isLoading}
-              onPress={() => router.replace("/(auth)/new-doctor")}
+              // onPress={() => router.replace("/(auth)/new-doctor")}
             />
             <Text style={styles.orText}>və ya</Text>
             <View style={styles.btnsGroup}>

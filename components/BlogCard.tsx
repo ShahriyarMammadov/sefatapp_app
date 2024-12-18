@@ -13,7 +13,7 @@ const BlogCard = ({ data }: any) => {
       onPress={() => router.replace(`/blogs/${data.id})`)}
     >
       <View style={styles.imgBox}>
-        <Image source={data.image} style={styles.img} />
+        <Image source={{uri:data.imageURL}} style={styles.img} />
       </View>
       <View style={styles.rightSide}>
         <Text style={styles.title}>{data.title}</Text>

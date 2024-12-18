@@ -23,7 +23,7 @@ const ReservationScreen = () => {
                 <Header />
                 <View>
                     <Text style={[styles.Text, { marginBottom: 20 }]}>
-                        Salam, Dr.Aydın
+                        Salam, Dr.Walter
                     </Text>
                 </View>
 
