@@ -178,6 +178,23 @@ const Rope = `<svg xmlns="http://www.w3.org/2000/svg" width="430" height="932" v
   </linearGradient>
 </defs>
 </svg>`;
+const Home = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+<path d="M9.52 3.34016L4.13 7.54016C3.23 8.24016 2.5 9.73016 2.5 10.8602V18.2702C2.5 20.5902 4.39 22.4902 6.71 22.4902H18.29C20.61 22.4902 22.5 20.5902 22.5 18.2802V11.0002C22.5 9.79016 21.69 8.24016 20.7 7.55016L14.52 3.22016C13.12 2.24016 10.87 2.29016 9.52 3.34016Z" stroke="#9DB2CE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12.5 18.4902V15.4902" stroke="#9DB2CE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
+const Two = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+<path d="M22.167 12.5V17.5C22.167 20.5 20.167 22.5 17.167 22.5H7.16699C4.16699 22.5 2.16699 20.5 2.16699 17.5V12.5C2.16699 9.78 3.80699 7.88 6.35699 7.56C6.61699 7.52 6.88699 7.5 7.16699 7.5H17.167C17.427 7.5 17.677 7.50999 17.917 7.54999C20.497 7.84999 22.167 9.76 22.167 12.5Z" stroke="#1F8871" stroke-opacity="0.44" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.9184 7.55C17.6784 7.51 17.4284 7.50001 17.1684 7.50001H7.1684C6.8884 7.50001 6.6184 7.52001 6.3584 7.56001C6.4984 7.28001 6.6984 7.02001 6.9384 6.78001L10.1884 3.52C11.5584 2.16 13.7784 2.16 15.1484 3.52L16.8984 5.29002C17.5384 5.92002 17.8784 6.72 17.9184 7.55Z" stroke="#1F8871" stroke-opacity="0.44" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22.167 13H19.167C18.067 13 17.167 13.9 17.167 15C17.167 16.1 18.067 17 19.167 17H22.167" stroke="#1F8871" stroke-opacity="0.44" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
+const Three = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+<path d="M19.153 12.5002C21.753 12.5002 22.833 11.5002 21.873 8.22018C21.223 6.01018 19.323 4.11018 17.113 3.46018C13.833 2.50018 12.833 3.58018 12.833 6.18018V9.06018C12.833 11.5002 13.833 12.5002 15.833 12.5002H19.153Z" stroke="#1F8871" stroke-opacity="0.44" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.8334 15.1998C19.9034 19.8298 15.4634 23.1898 10.4134 22.3698C6.62343 21.7598 3.57343 18.7098 2.95343 14.9198C2.14343 9.88977 5.48343 5.44977 10.0934 4.50977" stroke="#1F8871" stroke-opacity="0.44" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
+const Four = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+<path d="M12.5 12.5C15.2614 12.5 17.5 10.2614 17.5 7.5C17.5 4.73858 15.2614 2.5 12.5 2.5C9.73858 2.5 7.5 4.73858 7.5 7.5C7.5 10.2614 9.73858 12.5 12.5 12.5Z" stroke="#9DB2CE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.0901 22.5C21.0901 18.63 17.2402 15.5 12.5002 15.5C7.76015 15.5 3.91016 18.63 3.91016 22.5" stroke="#9DB2CE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
 export {
   arrowIcon,
   kardioloqIcon,
@@ -209,4 +226,8 @@ export {
   Search,
   Okey,
   Rope,
+  Home,
+  Two,
+  Three,
+  Four,
 };
