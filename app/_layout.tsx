@@ -1,8 +1,5 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import {
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
+import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack, useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -263,7 +260,7 @@ function RootLayoutNav() {
               gestureDirection: "horizontal",
             }}
           />
-            <Stack.Screen
+          <Stack.Screen
             name="(auth)/reserve-2"
             options={{
               headerShown: false,
@@ -271,7 +268,7 @@ function RootLayoutNav() {
               gestureDirection: "horizontal",
             }}
           />
-             <Stack.Screen
+          <Stack.Screen
             name="(auth)/patient"
             options={{
               headerShown: false,
@@ -279,7 +276,7 @@ function RootLayoutNav() {
               gestureDirection: "horizontal",
             }}
           />
-              <Stack.Screen
+          <Stack.Screen
             name="(auth)/reserve-3"
             options={{
               headerShown: false,
@@ -287,7 +284,7 @@ function RootLayoutNav() {
               gestureDirection: "horizontal",
             }}
           />
-              <Stack.Screen
+          <Stack.Screen
             name="(auth)/comments-page"
             options={{
               headerShown: false,
@@ -295,7 +292,7 @@ function RootLayoutNav() {
               gestureDirection: "horizontal",
             }}
           />
-              <Stack.Screen
+          <Stack.Screen
             name="(auth)/user-patient"
             options={{
               headerShown: false,
@@ -303,7 +300,54 @@ function RootLayoutNav() {
               gestureDirection: "horizontal",
             }}
           />
-
+          <Stack.Screen
+            name="(auth)/delete-page"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+          <Stack.Screen
+            name="(auth)/delete2-page"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+          <Stack.Screen
+            name="(auth)/delet-comment"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+          <Stack.Screen
+            name="(auth)/delet2-comment"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+          <Stack.Screen
+            name="(auth)/delet3-rezerv"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+            <Stack.Screen
+            name="(auth)/delet4-rezerv"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: "modal" }} />
         </Stack>

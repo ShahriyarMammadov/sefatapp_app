@@ -7,17 +7,17 @@ import {
   NativeSyntheticEvent,
   NativeTouchEvent,
   TouchableOpacity,
+  GestureResponderEvent,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import Colors from "@/constants/Colors";
 import { typography } from "@/constants/Typography";
 import Header from "@/components/Header";
 import BlogCard from "@/components/BlogCard";
-import { blogs } from "@/constants/BlogData";
 import axios from "axios";
 import CustomInput from "@/components/CustomInput";
 import { SvgXml } from "react-native-svg";
-import { Filtre, Search } from "@/assets/svg/aysun";
+import { Search } from "@/assets/svg/aysun";
 
 
 const Blog = () => {
