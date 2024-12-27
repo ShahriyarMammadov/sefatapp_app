@@ -1,10 +1,8 @@
 import {
     StyleSheet,
     Text,
-    View,
     ScrollView,
     SafeAreaView,
-    Image,
     GestureResponderEvent,
   } from "react-native";
   import React from "react";
@@ -16,7 +14,6 @@ import {
     function handleSignIn(event: GestureResponderEvent): void {
       throw new Error("Function not implemented.");
     }
-  
     return (
       <SafeAreaView style={styles.safeArea}>
         <ScrollView>
