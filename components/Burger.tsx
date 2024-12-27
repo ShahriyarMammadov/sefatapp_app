@@ -45,7 +45,7 @@ const BurgerMenu = () => {
     },
     {
       label: "Analiz nəticələrim",
-      url: "/",
+      url: "/(auth)/delet4-rezerv",
       icon: <SvgXml xml={Result} />,
     },
     {
