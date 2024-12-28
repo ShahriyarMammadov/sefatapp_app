@@ -340,8 +340,40 @@ function RootLayoutNav() {
               gestureDirection: "horizontal",
             }}
           />
-            <Stack.Screen
+          <Stack.Screen
             name="(auth)/delet4-rezerv"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+          <Stack.Screen
+            name="(auth)/buy-rezerv"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+          <Stack.Screen
+            name="(auth)/buy-recipe"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+          <Stack.Screen
+            name="(auth)/buy-analysis"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
+          <Stack.Screen
+            name="(auth)/guest-page"
             options={{
               headerShown: false,
               gestureEnabled: true,

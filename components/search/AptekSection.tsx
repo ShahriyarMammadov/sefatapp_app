@@ -1,3 +1,4 @@
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -7,41 +8,34 @@ import {
   TouchableOpacity,
   Pressable,
 } from "react-native";
-import React from "react";
-import tw from "twrnc";
 import { AntDesign, Feather, FontAwesome } from "@expo/vector-icons";
 import { clinics } from "@/constants/ClinicsData";
-import PharmacyCard from "../PharmacyCard";
 import { router } from "expo-router";
-export default function AptekSection() {
-  const renderAptek = ({ item }: any) => {
+
+const AptekSection = () => {
+  const renderAptek = ({ item }:any) => {
     const fullStars = Math.floor(item.rate);
     const halfStar = item.rate % 1 !== 0;
+
     return (
-      <View
-        style={tw`flex flex-col w-full border border-solid border-[#1B5750] rounded-xl p-2 gap-1.5 justify-between flex-1 mb-6`}
-      >
-        <View style={tw`flex flex-col  relative  justify-start items-start`}>
-          <Image
-            source={{ uri: item.image }}
-            style={tw` w-full h-40 rounded-md z-0 relative`}
-          />
-          <View style={tw`absolute  z-10 p-3.5`}>
+      <View style={styles.cardContainer}>
+        <View style={styles.imageContainer}>
+          <Image source={{ uri: item.image }} style={styles.image} />
+          <View style={styles.heartIcon}>
             <AntDesign name="hearto" size={24} color="black" />
           </View>
-          <View style={tw`absolute  z-10 p-3.5 top-0 right-0`}>
+          <View style={styles.openBadge}>
             <Text>7/24</Text>
           </View>
-          <View
-            style={tw`absolute bottom-0  flex  items-center justify-center right-0 left-0  bg-[#226D64] z-10 p-3`}
-          >
-            <Text style={tw`text-white font-medium`}>{item.aptek}</Text>
+          <View style={styles.aptekNameContainer}>
+            <Text style={styles.aptekName}>{item.aptek}</Text>
           </View>
         </View>
-        <View style={tw`flex flex-col gap-1.5`}>
-          <Text style={tw`text-[#0F312D]`}> Ünvan : {item.adress}</Text>
-          <View style={tw`flex flex-row justify-between items-center`}>
-            <View style={tw`flex flex-row gap-0.5`}>
+
+        <View style={styles.infoContainer}>
+          <Text style={styles.addressText}>Ünvan: {item.adress}</Text>
+          <View style={styles.ratingContainer}>
+            <View style={styles.starsContainer}>
               {[...Array(fullStars)].map((_, index) => (
                 <AntDesign key={index} name="star" size={16} color="#FFD557" />
               ))}
@@ -49,15 +43,12 @@ export default function AptekSection() {
                 <FontAwesome name="star-half-o" size={16} color="#FFD557" />
               )}
             </View>
-
-            <Text style={tw`text-[#0F312D]`}> {item.rate_limit} rəy</Text>
+            <Text style={styles.reviewsText}>{item.rate_limit} rəy</Text>
           </View>
         </View>
 
-        <TouchableOpacity
-          style={tw`bg-[#1F8871] py-2  flex flex-row  justify-between items-center w-full px-10 rounded-full flex items-center justify-center`}
-        >
-          <Text style={tw`text-xs text-center text-white `}>Alış Veriş Et</Text>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Alış Veriş Et</Text>
           <Feather name="shopping-cart" size={12} color="white" />
         </TouchableOpacity>
       </View>
@@ -65,24 +56,115 @@ export default function AptekSection() {
   };
 
   return (
-    <View style={tw`px-4 flex flex-col gap-6 w-full`}>
+    <View style={styles.container}>
       <Pressable
         onPress={() => router.replace("/pharmacies/pharmacies")}
-        style={tw`flex flex-row gap-2 items-center `}
+        style={styles.header}
       >
-        <Text style={tw`text-[#0F312D] text-xl`}>Aptekler</Text>
+        <Text style={styles.headerText}>Aptekler</Text>
         <AntDesign name="arrowright" size={16} color="#0F312D" />
       </Pressable>
       <FlatList
         data={clinics}
         numColumns={2}
-        columnWrapperStyle={tw`justify-between flex gap-5 flex-row w-full `}
-        renderItem={({ item }: any) => {
-          return <PharmacyCard data={item} />;
-        }}
+        columnWrapperStyle={styles.columnWrapper}
+        renderItem={({ item }) => <View>{renderAptek({ item })}</View>}
       />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 16,
+    flex: 1,
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 16,
+  },
+  headerText: {
+    fontSize: 18,
+    color: "#0F312D",
+    marginRight: 8,
+  },
+  columnWrapper: {
+    justifyContent: "space-between",
+    gap: 10,
+  },
+  cardContainer: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#1B5750",
+    borderRadius: 12,
+    padding: 8,
+    marginBottom: 12,
+  },
+  imageContainer: {
+    position: "relative",
+  },
+  image: {
+    width: "100%",
+    height: 150,
+    borderRadius: 8,
+  },
+  heartIcon: {
+    position: "absolute",
+    top: 8,
+    left: 8,
+  },
+  openBadge: {
+    position: "absolute",
+    top: 8,
+    right: 8,
+  },
+  aptekNameContainer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#226D64",
+    padding: 8,
+    alignItems: "center",
+  },
+  aptekName: {
+    color: "#FFFFFF",
+    fontWeight: "500",
+  },
+  infoContainer: {
+    marginTop: 8,
+  },
+  addressText: {
+    color: "#0F312D",
+    marginBottom: 4,
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  starsContainer: {
+    flexDirection: "row",
+  },
+  reviewsText: {
+    color: "#0F312D",
+  },
+  button: {
+    backgroundColor: "#1F8871",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderRadius: 50,
+    marginTop: 8,
+  },
+  buttonText: {
+    color: "#FFFFFF",
+    fontSize: 12,
+    textAlign: "center",
+  },
+});
+
+export default AptekSection;

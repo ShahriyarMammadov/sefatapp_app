@@ -9,7 +9,7 @@ const Tabs = () => {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.tabButton}
-        onPress={() => router.replace('/home')}
+        onPress={() => router.replace('/guest-page')}
       >
         <SvgXml xml={Home} />
       </TouchableOpacity>

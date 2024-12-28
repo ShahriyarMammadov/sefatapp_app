@@ -50,7 +50,7 @@ const BurgerMenu = () => {
     },
     {
       label: "Rəylər",
-      url: "/",
+      url: "/(auth)/buy-analysis",
       icon: <SvgXml xml={Rey} />,
     },
     {

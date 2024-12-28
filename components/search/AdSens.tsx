@@ -1,10 +1,25 @@
-import { Text, View } from "react-native";
-import React from "react";
-import tw from "twrnc";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
 export default function AdSens() {
   return (
-    <View style={tw`bg-[#D9D9D9] h-[143px] flex items-center justify-center`}>
-      <Text style={tw`text-xl font-medium text-black`}>AdSens</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>AdSens</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#D9D9D9',
+    height: 143,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 20, 
+    fontWeight: '500',
+    color: 'black',
+  },
+});
+
