@@ -18,7 +18,7 @@ const PharmacyCard = ({ data }: any) => {
       <View style={styles.imageContainer}>
         <Image source={{ uri: data.image }} style={styles.image} />
         <View style={styles.heartIcon}>
-          <AntDesign name="hearto" size={24} color="black" />
+          <AntDesign name="hearto" size={15} color="black" />
         </View>
         <View style={styles.availableText}>
           <Text>7/24</Text>
@@ -34,9 +34,9 @@ const PharmacyCard = ({ data }: any) => {
         <Text style={styles.addressText}>Ünvan : {data.adress}</Text>
         <View style={styles.ratingContainer}>
           <View style={styles.starsContainer}>
-            {[...Array(fullStars)].map((_, index) => (
+            {/* {[...Array(fullStars)].map((_, index) => (
               <AntDesign key={index} name="star" size={16} color="#FFD557" />
-            ))}
+            ))} */}
             {halfStar && (
               <FontAwesome name="star-half-o" size={16} color="#FFD557" />
             )}
@@ -47,7 +47,6 @@ const PharmacyCard = ({ data }: any) => {
 
       <TouchableOpacity style={styles.shopButton}>
         <Text style={styles.shopButtonText}>Alış Veriş Et</Text>
-        <Feather name="shopping-cart" size={12} color="white" />
       </TouchableOpacity>
     </View>
   );
@@ -57,39 +56,44 @@ export default PharmacyCard;
 
 const styles = StyleSheet.create({
   clinicContainer: {
-    flex: 1,
-    borderColor: "#1B5750",
-    borderWidth: 1,
-    borderRadius: 12,
-    padding: 8,
-    marginBottom: 24,
-    justifyContent: "space-between",
+    width: 148,
+    height: 207,
+    borderRadius: 20,
+    backgroundColor: "#FFFFFF",
+    shadowColor: "rgba(0, 0, 0, 0.14)",
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    shadowRadius: 21.399999618530273,
+    shadowOpacity: 1
   },
   imageContainer: {
     position: "relative",
   },
   image: {
-    width: "100%",
-    height: 160,
-    borderRadius: 8,
+    width: 100,
+    top:3,
+    height: 100,
+    borderRadius: 50,
+    left: 29,
   },
   heartIcon: {
     position: "absolute",
     top: 8,
-    left: 8,
+    right: 8,
   },
   availableText: {
     position: "absolute",
     top: 8,
-    right: 8,
+    left: 8,
   },
   clinicNameContainer: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: "#226D64",
-    paddingVertical: 12,
+    width: 148,
+    height: 24,
+    top:6,
+    backgroundColor: "#E9F0F0",
+    paddingVertical: 1,
     alignItems: "center",
   },
   clinicName: {
@@ -114,17 +118,23 @@ const styles = StyleSheet.create({
     color: "#0F312D",
   },
   shopButton: {
-    flexDirection: "row",
-    backgroundColor: "#1F8871",
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 24,
-    justifyContent: "center",
-    alignItems: "center",
+    width: 95.60420227050781,
+    height: 23.03715705871582,
+    borderRadius: 10,
+    top:-4,
+    left:28,
+    backgroundColor: "#226D64"
   },
   shopButtonText: {
-    color: "white",
-    fontSize: 14,
-    marginRight: 8,
+    width: 64,
+    height: 17,
+    top:8,
+    left:15,
+    fontFamily: "Poppins",
+    fontSize: 11.51857852935791,
+    fontWeight: "400",
+    fontStyle: "normal",
+    lineHeight: 11.51857852935791,
+    color: "#FFFFFF"
   },
 });

@@ -70,7 +70,7 @@ const BurgerMenu = () => {
     },
     {
       label: "Dil seçimi",
-      url: "/",
+      url: "/(auth)/payment",
       icon: <SvgXml xml={Language} />,
     },
     {

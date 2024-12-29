@@ -16,16 +16,17 @@ const ClinicCard = ({ data }: any) => {
   return (
     <View style={styles.clinicContainer}>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: data.imageURL }} style={styles.image} />
+        <Image source={{ uri: data.imageURL }} style={styles.profileImage} />
+        <Text style={styles.text}>Yeni Klinika</Text>
         <View style={styles.heartIcon}>
-          <AntDesign name="hearto" size={24} color="black" />
+          <AntDesign name="hearto" size={15} color="black" />
         </View>
-        <Pressable
+        {/* <Pressable
           onPress={() => router.replace(`/clinics/${data._id}`)}
           style={styles.clinicNameContainer}
         >
           <Text style={styles.clinicName}>{data.name}</Text>
-        </Pressable>
+        </Pressable> */}
       </View>
       <View style={styles.infoContainer}>
         <Text style={styles.addressText}>Ünvan: {data.location.address}</Text>
@@ -76,22 +77,28 @@ export default ClinicCard;
 
 const styles = StyleSheet.create({
   clinicContainer: {
-    width: 175,
-    height: 250,
-    borderColor: "#1B5750",
-    borderWidth: 1,
-    borderRadius: 12,
-    padding: 8,
-    marginBottom: 16,
+    width: 148,
+    height: 238,
+    borderRadius: 20,
+    backgroundColor: "#FFFFFF",
+    shadowColor: "rgba(0, 0, 0, 0.14)",
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
+    shadowRadius: 21.399999618530273,
+    shadowOpacity: 1,
   },
   imageContainer: {
     position: "relative",
     marginBottom: 8,
   },
-  image: {
-    width: "100%",
+  profileImage: {
+    width: 100,
+    top: 3,
     height: 100,
-    borderRadius: 8,
+    borderRadius: 50,
+    left: 21,
   },
   heartIcon: {
     position: "absolute",
@@ -145,13 +152,35 @@ const styles = StyleSheet.create({
     color: "#0F312D",
   },
   reserveButton: {
-    backgroundColor: "#1F8871",
-    paddingVertical: 12,
-    borderRadius: 24,
-    alignItems: "center",
+    width: 95.60420227050781,
+    top: 25,
+    left: 25,
+    height: 23.03715705871582,
+    borderRadius: 10,
+    backgroundColor: "#226D64",
   },
   reserveButtonText: {
-    color: "white",
-    fontSize: 14,
+    width: 52,
+    height: 17,
+    top: 9,
+    left: 24,
+    fontFamily: "Poppins",
+    fontSize: 11.51857852935791,
+    fontWeight: "400",
+    fontStyle: "normal",
+    lineHeight: 11.51857852935791,
+    color: "#FFFFFF",
+  },
+  text: {
+    width: 66,
+    height: 17,
+    top: 9,
+    left: 35,
+    fontFamily: "Poppins",
+    fontSize: 11.51857852935791,
+    fontWeight: "500",
+    fontStyle: "normal",
+    lineHeight: 11.51857852935791,
+    color: "#000000",
   },
 });

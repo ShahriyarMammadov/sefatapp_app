@@ -15,14 +15,17 @@ import CustomInput from "@/components/CustomInput";
 import { useSelector } from "react-redux";
 import Burger from "@/components/Burger";
 import { RootState } from "@/store/store";
-import TabButton from "@/components/TabButton";
+import TabMenu from "@/components/TabMenu";
 
 const UserScreen = () => {
   const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.content}
+      >
         {isBurgerOpen ? <Burger /> : null}
         <Header />
         <Text style={styles.greeting}>Salam, Dr. Walter</Text>
@@ -74,7 +77,7 @@ const UserScreen = () => {
         </View>
       </ScrollView>
 
-      <TabButton style={styles.tabButton} />
+      <TabMenu />
     </SafeAreaView>
   );
 };
@@ -85,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   content: {
-    paddingBottom: 100, 
+    paddingBottom: 100,
   },
   safeArea: {
     flex: 1,
@@ -120,8 +123,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   tabButton: {
-    position: "absolute", 
-    bottom: 0, 
+    position: "absolute",
+    bottom: 0,
     left: 0,
     right: 0,
     height: 80,

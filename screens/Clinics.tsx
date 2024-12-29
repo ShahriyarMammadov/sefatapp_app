@@ -12,23 +12,22 @@ import { AntDesign } from "@expo/vector-icons";
 import { typography } from "@/constants/Typography";
 import Header from "@/components/Header";
 import ClinicCard from "@/components/ClinicCard";
-import UserHeader from "@/components/UserHeader";
 import Colors from "@/constants/Colors";
 import { useGetClinicsQuery } from "@/store/appSlice";
+import TabMenu from "@/components/TabMenu";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import BurgerMenu from "@/components/Burger";
 
 export default function Clinics() {
+  const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
+
   const { data, error, isLoading } = useGetClinicsQuery({});
   return (
     <SafeAreaView style={styles.safeArea}>
+      {isBurgerOpen ? <BurgerMenu /> : null}
+
       <Header />
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Klinikalar</Text>
-      </View>
-
-      <View style={styles.userHeader}>
-        <UserHeader />
-      </View>
-
       <View style={styles.container}>
         <View style={styles.searchContainer}>
           <TextInput
@@ -37,8 +36,11 @@ export default function Clinics() {
             style={styles.searchInput}
           />
           <TouchableOpacity style={styles.iconInsideInput}>
-            <AntDesign name="search1" size={20} color="#0F312D" />
+            <AntDesign name="search1" size={20} />
           </TouchableOpacity>
+        </View>
+        <View>
+          <Text style={styles.userText}>Klinikalar</Text>
         </View>
 
         <FlatList
@@ -49,6 +51,7 @@ export default function Clinics() {
             return <ClinicCard data={item} />;
           }}
         />
+        <TabMenu />
       </View>
     </SafeAreaView>
   );
@@ -69,11 +72,6 @@ const styles = StyleSheet.create({
   headerText: {
     ...typography.titleMedium400,
     color: Colors.light.lightGreenActive,
-  },
-  header: {
-    paddingVertical: 12,
-    backgroundColor: Colors.light.green,
-    alignItems: "center",
   },
   headerTitleContainer: {
     alignItems: "center",
@@ -99,11 +97,17 @@ const styles = StyleSheet.create({
     paddingVertical: 1,
   },
   searchInput: {
-    flex: 1,
-    padding: 10,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    borderRadius: 0,
+    width: 386,
+    height: 44,
+    borderRadius: 6,
+    backgroundColor: "#FFFFFF",
+    shadowColor: "rgba(0, 0, 0, 0.08)",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowRadius: 20,
+    shadowOpacity: 1,
   },
   searchIconContainer: {
     marginLeft: 10,
@@ -142,12 +146,25 @@ const styles = StyleSheet.create({
   },
   columnWrapper: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     flexWrap: "wrap",
-    gap: 10,
+    gap: 50,
+    marginBottom: 25,
   },
+
   userHeader: {
     paddingTop: 20,
     // paddingBottom: 36,
+  },
+  userText: {
+    width: 133,
+    height: 30,
+    left: 140,
+    fontFamily: "Poppins",
+    fontSize: 20,
+    fontWeight: "600",
+    fontStyle: "normal",
+    lineHeight: 20,
+    color: "#226D64",
   },
 });

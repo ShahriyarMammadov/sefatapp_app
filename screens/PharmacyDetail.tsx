@@ -11,7 +11,6 @@ import React from "react";
 import Colors from "@/constants/Colors";
 import { typography } from "@/constants/Typography";
 import { useGlobalSearchParams } from "expo-router";
-import UserHeader from "@/components/UserHeader";
 import Header from "@/components/Header";
 import { clinics } from "@/constants/ClinicsData";
 import CustomButton from "@/components/CustomButton";
@@ -27,9 +26,6 @@ const BlogDetail = () => {
       <Header />
 
       <View style={styles.container}>
-        <View style={styles.userHeader}>
-          <UserHeader />
-        </View>
         <ScrollView
           contentContainerStyle={styles.scrollContainer}
           showsVerticalScrollIndicator={false}

@@ -11,11 +11,18 @@ import { FontAwesome } from "@expo/vector-icons";
 import Header from "@/components/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
+import TabButton from "@/components/TabButton";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import BurgerMenu from "@/components/BurgerMenu";
 
 const ProfileScreen = () => {
+  const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container}>
+      <ScrollView   style={styles.container}
+        contentContainerStyle={styles.content}>
+           {isBurgerOpen ? <BurgerMenu /> : null}
         <Header />
         <Text style={styles.greeting}>Salam, Dr. Walter</Text>
         {/* <View style={styles.header}> */}
@@ -82,30 +89,9 @@ const ProfileScreen = () => {
             <Text style={styles.info}>Nigeriya</Text>
           </View>
 
-          <View style={styles.bottomNav}>
-            <TouchableOpacity
-              onPress={() => router.replace("/(auth)/comment-page")}
-            >
-              <FontAwesome name="home" size={24} color="#9DB2CE" />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => router.replace("/(auth)/reserve-2")}
-            >
-              <FontAwesome name="bell" size={24} color="#1F887170" />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => router.replace("/(auth)/statistics-page")}
-            >
-              <FontAwesome name="cog" size={24} color="#1F887170" />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => router.replace("/(auth)/person-profile")}
-            >
-              <FontAwesome name="user" size={24} color="#1F887170" />
-            </TouchableOpacity>
-          </View>
         </View>
       </ScrollView>
+      <TabButton />
     </SafeAreaView>
   );
 };
@@ -114,6 +100,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  content: {
+    paddingBottom: 80,
   },
   safeArea: {
     flex: 1,
@@ -198,6 +187,16 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     // lineHeight: "normal",
     letterSpacing: 0.24,
+  },
+  tabButton: {
+    position: "absolute", 
+    bottom: 0, 
+    left: 0,
+    right: 0,
+    height: 80,
+    backgroundColor: "#ffffff",
+    borderTopWidth: 6,
+    borderTopColor: "#E0E0E0",
   },
 });
 

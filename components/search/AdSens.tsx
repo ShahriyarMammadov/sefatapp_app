@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function AdSens() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>AdSens</Text>
+      <Text style={styles.text}>Reklam</Text>
     </View>
   );
 }
@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     height: 143,
     justifyContent: 'center',
     alignItems: 'center',
+    width: "100%",
   },
   text: {
     fontSize: 20, 

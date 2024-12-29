@@ -7,6 +7,7 @@ import {
   StyleSheet,
   SafeAreaView,
   FlatList,
+  ScrollView,
 } from "react-native";
 import Header from "@/components/Header";
 import { AntDesign } from "@expo/vector-icons";
@@ -15,44 +16,62 @@ import MainDoctorCard from "@/components/MainDoctorCard";
 import UserHeader from "@/components/UserHeader";
 import Colors from "@/constants/Colors";
 import { useGetDoctorsQuery } from "@/store/appSlice";
+import TabMenu from "@/components/TabMenu";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import Burger from "@/components/Burger";
 
 export default function Doctors() {
   const { data, error, isLoading } = useGetDoctorsQuery({});
+  const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <Header />
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Həkimlərimiz</Text>
-      </View>
-      <View style={styles.userHeader}>
-        <UserHeader />
-      </View>
-      <View style={styles.container}>
-        <View style={styles.searchContainer}>
-          <TextInput
-            placeholder="Axtarış..."
-            placeholderTextColor="#888"
-            style={styles.searchInput}
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.content}
+      >
+        {isBurgerOpen ? <Burger /> : null}
+
+        <Header />
+        <View style={styles.userHeader}></View>
+        <View style={styles.container}>
+          <View style={styles.searchContainer}>
+            <TextInput
+              placeholder="Axtarış..."
+              placeholderTextColor="#888"
+              style={styles.searchInput}
+            />
+            <TouchableOpacity style={styles.iconInsideInput}>
+              <AntDesign name="search1" size={20} color="#0F312D" />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <Text style={styles.userText}>Klinikalar</Text>
+          </View>
+          <FlatList
+            data={data}
+            numColumns={2}
+            columnWrapperStyle={styles.columnWrapper}
+            renderItem={({ item }: any) => {
+              return <MainDoctorCard data={item} />;
+            }}
           />
-          <TouchableOpacity style={styles.iconInsideInput}>
-            <AntDesign name="search1" size={20} color="#0F312D" />
-          </TouchableOpacity>
         </View>
-        <FlatList
-          data={data}
-          numColumns={2}
-          columnWrapperStyle={styles.columnWrapper}
-          renderItem={({ item }: any) => {
-            return <MainDoctorCard data={item} />;
-          }}
-        />
-      </View>
+      </ScrollView>
+      <TabMenu />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  content: {
+    paddingBottom: 80,
+  },
   safeArea: {
     flex: 1,
     backgroundColor: "#fff",
@@ -66,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.light.green,
     alignItems: "center",
   },
-  container: {
+  containe: {
     paddingHorizontal: 16,
     paddingVertical: 20,
     backgroundColor: "white",
@@ -144,5 +163,16 @@ const styles = StyleSheet.create({
   userHeader: {
     // paddingTop: 20,
     // paddingBottom: 36,
+  },
+  userText: {
+    width: 133,
+    height: 30,
+    left: 140,
+    fontFamily: "Poppins",
+    fontSize: 20,
+    fontWeight: "600",
+    fontStyle: "normal",
+    lineHeight: 20,
+    color: "#226D64",
   },
 });

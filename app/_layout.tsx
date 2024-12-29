@@ -380,6 +380,14 @@ function RootLayoutNav() {
               gestureDirection: "horizontal",
             }}
           />
+          <Stack.Screen
+            name="(auth)/payment"
+            options={{
+              headerShown: false,
+              gestureEnabled: true,
+              gestureDirection: "horizontal",
+            }}
+          />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: "modal" }} />
         </Stack>

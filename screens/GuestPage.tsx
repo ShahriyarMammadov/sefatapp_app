@@ -6,12 +6,13 @@ import { useSelector } from "react-redux";
 import Burger from "@/components/Burger";
 import { RootState } from "@/store/store";
 import TabButton from "@/components/TabButton";
-import { SvgXml } from "react-native-svg";
 import CustomInput from "@/components/CustomInput";
-import DoctorSection from "@/components/search/DoctorSection";
 import ClinicSection from "@/components/search/ClinicSection";
 import AptekSection from "@/components/search/AptekSection";
 import AdSens from "@/components/search/AdSens";
+import MainDoctorCard from "@/components/MainDoctorCard";
+import DoctorSection from "@/components/search/DoctorSection";
+// import AdSens from "@/components/search/AdSens";
 
 const UserScreen = () => {
   const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
@@ -50,13 +51,15 @@ const UserScreen = () => {
           <Text style={styles.text}>Salam, Akif</Text>
         </View>
         <View style={styles.main}>
-            <AdSens/>
-            <ClinicSection/>
-            <AptekSection/>
+          <AdSens />
+          <DoctorSection />
+          <ClinicSection />
+          <AdSens />
+          <AptekSection />
         </View>
       </ScrollView>
 
-      <TabButton style={styles.tabButton} />
+      <TabButton />
     </SafeAreaView>
   );
 };
@@ -75,7 +78,7 @@ const styles = StyleSheet.create({
   },
 
   main: {
-    paddingHorizontal: 16,
+    // paddingHorizontal: 16,
   },
   tabButton: {
     position: "absolute",
