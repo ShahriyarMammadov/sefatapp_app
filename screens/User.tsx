@@ -13,16 +13,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
 import { useSelector } from "react-redux";
-import ProfileScreen from "./NewDoctor";
 import Burger from "@/components/Burger";
 import { RootState } from "@/store/store";
+import TabButton from "@/components/TabButton";
 
 const UserScreen = () => {
   const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} contentContainerStyle={styles.content}>
         {isBurgerOpen ? <Burger /> : null}
         <Header />
         <Text style={styles.greeting}>Salam, Dr. Walter</Text>
@@ -73,6 +73,8 @@ const UserScreen = () => {
           />
         </View>
       </ScrollView>
+
+      <TabButton style={styles.tabButton} />
     </SafeAreaView>
   );
 };
@@ -82,18 +84,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
+  content: {
+    paddingBottom: 100, 
+  },
   safeArea: {
     flex: 1,
     backgroundColor: "#fff",
-  },
-  header: {
-    alignItems: "center",
-    marginVertical: 20,
-  },
-  appName: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#0f312d",
   },
   greeting: {
     fontSize: 25,
@@ -102,11 +98,6 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: "500",
     textAlign: "center",
-  },
-  menuIcon: {
-    position: "absolute",
-    right: 16,
-    top: 16,
   },
   profileSection: {
     alignItems: "center",
@@ -125,46 +116,18 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 4,
   },
-
-  infoSection: {
-    marginVertical: 10,
-  },
-  label: {
-    fontSize: 16,
-    color: "#000000",
-    fontWeight: "bold",
-    opacity: 0.5,
-  },
-  info: {
-    fontSize: 20,
-    color: "#000",
-    fontFamily: "Poppins",
-    fontStyle: "normal",
-    fontWeight: "500",
-    lineHeight: 24,
-    marginBottom: 10,
-  },
-  addressSection: {
-    marginVertical: 20,
-  },
-  bottomNav: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    paddingVertical: 10,
-    borderTopWidth: 1,
-    borderColor: "#ddd",
-  },
-  text: {
-    color: "#226D64",
-    fontFamily: "Poppins",
-    fontSize: 24,
-    fontStyle: "normal",
-    fontWeight: "500",
-    // lineHeight: "normal",
-    letterSpacing: 0.24,
-  },
   main: {
     paddingHorizontal: 16,
+  },
+  tabButton: {
+    position: "absolute", 
+    bottom: 0, 
+    left: 0,
+    right: 0,
+    height: 80,
+    backgroundColor: "#ffffff",
+    borderTopWidth: 6,
+    borderTopColor: "#E0E0E0",
   },
 });
 

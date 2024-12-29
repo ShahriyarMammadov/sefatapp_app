@@ -4,7 +4,6 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { SvgXml } from "react-native-svg";
 import { Hour } from "@/assets/svg/aysun";
 import CustomButton from "./CustomButton";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 import { typography } from "@/constants/Typography";
 
 const DoctorCard = () => {

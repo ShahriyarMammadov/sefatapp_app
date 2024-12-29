@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View, FlatList, Pressable } from "react-native";
 import React from "react";
-import tw from "twrnc";
+import { View, Text, FlatList, Pressable, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
 import MainDoctorCard from "../MainDoctorCard";
@@ -10,19 +9,19 @@ export default function DoctorSection() {
   const { data, error, isLoading } = useGetDoctorsQuery({});
 
   return (
-    <View style={tw`px-4 flex flex-col gap-6`}>
+    <View style={styles.container}>
       <Pressable
         onPress={() => router.replace("/doctors/doctors")}
-        style={tw`flex flex-row gap-2 items-center `}
+        style={styles.header}
       >
-        <Text style={tw`text-[#0F312D] text-xl`}>Həkimlərimiz</Text>
+        <Text style={styles.headerText}>Həkimlərimiz</Text>
         <AntDesign name="arrowright" size={16} color="#0F312D" />
       </Pressable>
       <FlatList
         data={data}
         numColumns={2}
-        columnWrapperStyle={tw`justify-between flex gap-6 flex-row `}
-        renderItem={({ item }: any) => {
+        columnWrapperStyle={styles.columnWrapper}
+        renderItem={({ item }) => {
           return <MainDoctorCard data={item} />;
         }}
       />
@@ -30,4 +29,24 @@ export default function DoctorSection() {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 16, 
+    flexDirection: "column",
+    gap: 24, 
+  },
+  header: {
+    flexDirection: "row",
+    gap: 8, 
+    alignItems: "center",
+  },
+  headerText: {
+    fontSize: 18,
+    color: "#0F312D", 
+  },
+  columnWrapper: {
+    justifyContent: "space-between", 
+    gap: 24, 
+    flexDirection: "row",
+  },
+});
