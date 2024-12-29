@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import Header from "@/components/Header";
 import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import TabButton from "@/components/TabButton";
 
 const ReservationScreen = () => {
   const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
@@ -70,6 +71,7 @@ const ReservationScreen = () => {
           <Text style={styles.footerText}>Ödəniş məbləği: 60 azn</Text>
         </View>
       </ScrollView>
+      <TabButton />
     </SafeAreaView>
   );
 };

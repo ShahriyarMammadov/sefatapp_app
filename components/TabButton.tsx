@@ -9,22 +9,21 @@ const Tabs = () => {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.tabButton}
-        onPress={() => router.replace('/guest-page')}
+        // onPress={() => router.replace('/guest-page')}
       >
         <SvgXml xml={Home} />
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.tabButton}
-        // onPress={() => router.replace('/screen2')}
+        onPress={() => router.replace('/reserve-2')}
       >
         <SvgXml xml={Two} />
       </TouchableOpacity>
 
-      {/* Profile Tab */}
       <TouchableOpacity
         style={styles.tabButton}
-        // onPress={() => router.replace('/profile')}
+        onPress={() => router.replace('/statistics-page')}
       >
         <SvgXml xml={Three} />
       </TouchableOpacity>
