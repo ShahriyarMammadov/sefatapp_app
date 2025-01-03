@@ -6,7 +6,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from "@/constants/Screen";
+import { SCREEN_WIDTH } from "@/constants/Screen";
 import {
   AboutIcon,
   AptekIcon,
@@ -40,7 +40,7 @@ const BurgerMenu = () => {
     },
     {
       label: "Reseptlərim",
-      url: "/",
+      url: "/(auth)/delet3-rezerv",
       icon: <SvgXml xml={Recipe} />,
     },
     {
@@ -55,27 +55,27 @@ const BurgerMenu = () => {
     },
     {
       label: "Favoritlərim",
-      url: "(dashboard)/about",
+      url: "/(auth)/delet4-rezerv",
       icon: <SvgXml xml={Fav} />,
     },
     {
       label: "Sifarişlərim",
-      url: "(dashboard)/contact",
+      url: "/(auth)/buy-analysis",
       icon: <SvgXml xml={Order} />,
     },
     {
       label: "Parametrlər",
-      url: "/",
+      url: "/(auth)/buy-recipe",
       icon: <SvgXml xml={AboutIcon} />,
     },
     {
       label: "Dil seçimi",
-      url: "/(auth)/payment",
+      url: "/(auth)/buy-rezerv",
       icon: <SvgXml xml={Language} />,
     },
     {
       label: "Çıxış et",
-      url: "/",
+      url: "/(auth)/delete-page",
       icon: <SvgXml xml={OutputIcon} />,
     },
   ];
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
+    height: "100%",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     zIndex: 999,
   },
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    height: SCREEN_HEIGHT,
+    height: "100%",
     width: SCREEN_WIDTH * 0.7,
     backgroundColor: "#fff",
     paddingVertical: 20,

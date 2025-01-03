@@ -107,7 +107,7 @@ const SignIn: React.FC = () => {
         }
       } catch (error) {
         console.log(error);
-          Alert.alert(error.data.message )
+          Alert.alert(error?.data?.message )
         
       }
     }

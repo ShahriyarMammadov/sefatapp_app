@@ -12,11 +12,17 @@ const data = [
     value: "1250 azn",
     color: "##FFFFFF",
     icon: "💰",
-    width: 177.786,
-    height: 95.813,
-    flexShrink: 0,
-    borderRadius: 21.292,
-    // background: "##FFFFFF",
+width: 177.78639221191406,
+height: 95.81302642822266,
+borderRadius: 21.291784286499023,
+backgroundColor: "#FFFFFF",
+shadowColor: "rgba(218, 221, 232, 0.8)",
+shadowOffset: {
+	width: 4.258357048034668,
+	height: 4.258357048034668
+},
+shadowRadius: 19.16260528564453,
+shadowOpacity: 1,
   },
   {
     id: "2",

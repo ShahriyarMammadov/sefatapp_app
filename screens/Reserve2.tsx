@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -14,9 +14,44 @@ import Header from "@/components/Header";
 import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TabButton from "@/components/TabButton";
+import { useCreateReservationMutation } from "@/store/appSlice";
+
+interface FormData {
+  fullName: string;
+  phone: string;
+  finCode: string;
+  complaint: string;
+  response: string;
+}
 
 const ReservationScreen = () => {
   const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
+  const [createReservation, { isLoading }] = useCreateReservationMutation({});
+
+  const [formData, setFormData] = useState<FormData>({
+    fullName: "",
+    phone: "",
+    finCode: "",
+    complaint: "",
+    response: "",
+  });
+
+  const handleInputChange = (field: keyof FormData, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await createReservation(formData).unwrap();
+      console.log("Rezervasiya yaradıldı");
+    } catch (error) {
+      // alert("Xəta baş verdi: " + error.message);
+      console.error("Xəta baş verdi:", error);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -30,17 +65,27 @@ const ReservationScreen = () => {
             Filan pasiyentin nəticəsini yoxlamaq
           </Text>
           <View style={styles.form}>
-            <TextInput style={styles.input} placeholder="Ad Soyad" />
+            <TextInput
+              style={styles.input}
+              placeholder="Ad Soyad"
+              onChangeText={(value) => handleInputChange("fullName", value)}
+            />
             <TextInput
               style={styles.input}
               placeholder="Mobil nömrə"
               keyboardType="phone-pad"
+              onChangeText={(value) => handleInputChange("phone", value)}
             />
-            <TextInput style={styles.input} placeholder="Fin kod" />
+            <TextInput
+              style={styles.input}
+              placeholder="Fin kod"
+              onChangeText={(value) => handleInputChange("finCode", value)}
+            />
             <TextInput
               style={[styles.input, styles.textArea]}
               placeholder="Şikayəti"
               multiline
+              onChangeText={(value) => handleInputChange("complaint", value)}
             />
             <TouchableOpacity style={styles.fileUpload}>
               <FontAwesome name="upload" size={18} color="#226D64" />
@@ -51,14 +96,21 @@ const ReservationScreen = () => {
             <TextInput
               style={styles.input}
               placeholder="Cavabınızı qeyd edin"
+              onChangeText={(value) => handleInputChange("response", value)}
             />
             <View style={styles.responseIcons}>
               <FontAwesome name="paperclip" size={18} color="#226D64" />
               <FontAwesome name="image" size={18} color="#226D64" />
               <MaterialIcons name="send" size={20} color="#226D64" />
             </View>
-            <TouchableOpacity style={styles.submitButton}>
-              <Text style={styles.submitText}>Təsdiqlə</Text>
+            <TouchableOpacity
+              onPress={handleSubmit}
+              style={styles.submitButton}
+              disabled={isLoading}
+            >
+              <Text style={styles.submitText}>
+                {isLoading ? "Yüklənir..." : "Təsdiqlə"}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

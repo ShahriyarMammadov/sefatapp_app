@@ -56,8 +56,7 @@ export default PharmacyCard;
 
 const styles = StyleSheet.create({
   clinicContainer: {
-    width: 148,
-    height: 207,
+    padding: 8,
     borderRadius: 20,
     backgroundColor: "#FFFFFF",
     shadowColor: "rgba(0, 0, 0, 0.14)",
@@ -118,23 +117,17 @@ const styles = StyleSheet.create({
     color: "#0F312D",
   },
   shopButton: {
-    width: 95.60420227050781,
-    height: 23.03715705871582,
+    paddingBlock: 8,
+    paddingInline: 16,
     borderRadius: 10,
-    top:-4,
-    left:28,
-    backgroundColor: "#226D64"
+    backgroundColor: "#226D64",
+    margin: 'auto'
   },
   shopButtonText: {
-    width: 64,
-    height: 17,
-    top:8,
-    left:15,
     fontFamily: "Poppins",
-    fontSize: 11.51857852935791,
     fontWeight: "400",
     fontStyle: "normal",
-    lineHeight: 11.51857852935791,
+    fontSize: 14,
     color: "#FFFFFF"
   },
 });

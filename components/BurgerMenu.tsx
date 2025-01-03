@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from "@/constants/Screen";
 import {
   AboutIcon,
@@ -26,17 +26,18 @@ const BurgerMenu = () => {
   const dispatch = useDispatch();
   const menuItems = [
     {
-      label: "Həkimlərimiz",
+      label: "Ana Səhifə",
       url: "/(auth)/patient",
       icon: <SvgXml xml={DoctorIcon} />,
     },
-  
-    { label: "Rezervlər",
-     url: "/(auth)/reserve-3",
-      icon: <SvgXml xml={AptekIcon} /> 
+
+    {
+      label: "Rezervlər",
+      url: "/(auth)/reserve-3",
+      icon: <SvgXml xml={AptekIcon} />,
     },
     {
-      label: "Təqvim", 
+      label: "Təqvim",
       url: "/",
       icon: <SvgXml xml={KlinikaIcon} />,
     },
@@ -52,12 +53,12 @@ const BurgerMenu = () => {
     },
     {
       label: "Parametrlər",
-      url: "(dashboard)/about",
+      url: "/(auth)/delet-comment",
       icon: <SvgXml xml={AboutIcon} />,
     },
     {
       label: "Dil seçimi",
-      url: "(dashboard)/contact",
+      url: "/(auth)/delet2-comment",
       icon: <SvgXml xml={ContactIcon} />,
     },
     {
@@ -66,6 +67,13 @@ const BurgerMenu = () => {
       icon: <SvgXml xml={OutputIcon} />,
     },
   ];
+
+  useEffect(() => {
+    return () => {
+      dispatch(closeBurger());
+    }
+  }, [router]);
+
   return (
     <>
       <Pressable
@@ -99,7 +107,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
+    height:  "100%",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     zIndex: 999,
   },
@@ -107,7 +115,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    height: SCREEN_HEIGHT,
+    height:  "100%",
     width: SCREEN_WIDTH * 0.7,
     backgroundColor: "#fff",
     paddingVertical: 20,

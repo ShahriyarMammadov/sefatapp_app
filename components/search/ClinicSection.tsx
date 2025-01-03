@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, FlatList, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Pressable,
+  ScrollView,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import ClinicCard from "../ClinicCard";
 import { router } from "expo-router";
@@ -17,13 +24,15 @@ export default function ClinicSection() {
         <Text style={styles.title}>Klinikalar</Text>
         <AntDesign name="arrowright" size={16} color="#0F312D" />
       </Pressable>
-      <FlatList
-        data={data}
-        numColumns={2}
-        columnWrapperStyle={styles.columnWrapper}
-        renderItem={({ item }) => <ClinicCard data={item} />}
-        keyExtractor={(item, index) => index.toString()}
-      />
+      <ScrollView>
+        <FlatList
+          data={data}
+          horizontal
+          contentContainerStyle={styles.columnWrapper}
+          renderItem={({ item }) => <ClinicCard data={item} />}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </ScrollView>
     </View>
   );
 }
@@ -31,24 +40,19 @@ export default function ClinicSection() {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
-    flex: 1,
-    flexDirection: "column",
-    gap: 24,
-    width: "100%",
   },
   header: {
     flexDirection: "row",
-    alignItems: "center",
     gap: 8,
+    alignItems: "center",
   },
   title: {
-    color: "#0F312D",
     fontSize: 20,
+    color: "#0F312D",
+    paddingVertical: 12,
   },
   columnWrapper: {
-    justifyContent: "space-between",
-    flexDirection: "row",
-    gap: 16,
-    width: "100%",
+    paddingVertical: 12,
+    gap: 12,
   },
 });

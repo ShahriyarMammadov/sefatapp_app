@@ -188,16 +188,6 @@ const styles = StyleSheet.create({
     // lineHeight: "normal",
     letterSpacing: 0.24,
   },
-  tabButton: {
-    position: "absolute", 
-    bottom: 0, 
-    left: 0,
-    right: 0,
-    height: 80,
-    backgroundColor: "#ffffff",
-    borderTopWidth: 6,
-    borderTopColor: "#E0E0E0",
-  },
 });
 
 export default ProfileScreen;

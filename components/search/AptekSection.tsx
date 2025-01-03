@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, FlatList, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Pressable,
+  ScrollView,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useGetClinicsQuery } from "@/store/appSlice";
@@ -9,7 +16,7 @@ export default function ClinicSection() {
   const { data, error, isLoading } = useGetClinicsQuery({});
 
   return (
-    <View style={styles.container}>
+    <View>
       <Pressable
         onPress={() => router.replace("/pharmacies/pharmacies")}
         style={styles.header}
@@ -17,34 +24,30 @@ export default function ClinicSection() {
         <Text style={styles.title}>Apteklər</Text>
         <AntDesign name="arrowright" size={16} color="#0F312D" />
       </Pressable>
-      <FlatList
-        data={data}
-        numColumns={2}
-        columnWrapperStyle={styles.columnWrapper}
-        renderItem={({ item }) => <PharmacyCard data={item} />}
-        keyExtractor={(item, index) => index.toString()}
-      />
+      <ScrollView>
+        <FlatList
+          data={data}
+          horizontal
+          contentContainerStyle={styles.columnWrapper}
+          renderItem={({ item }) => <PharmacyCard data={item} />}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 16,
-    flex: 1,
-    flexDirection: "column",
-    gap: 24,
-    width: "100%",
-  },
   header: {
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
+    paddingInline: 16,
+    paddingBlock: 8,
   },
   headerText: {
     fontSize: 18,
     color: "#0F312D",
-    marginRight: 8,
   },
   title: {
     color: "#0F312D",
@@ -54,6 +57,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
     gap: 16,
-    width: "100%",
+    padding: 16,
   },
 });

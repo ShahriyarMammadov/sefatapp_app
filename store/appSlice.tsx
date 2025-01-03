@@ -48,6 +48,13 @@ export const authApi = createApi({
     getClinics: builder.query({
       query: () => "clinics",
     }),
+    createReservation: builder.mutation({
+      query: (data) => ({
+        url: "reservations",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -60,4 +67,5 @@ export const {
   useAddFavoriteMutation,
   useGetDoctorsQuery,
   useGetClinicsQuery,
+  useCreateReservationMutation,
 } = authApi;

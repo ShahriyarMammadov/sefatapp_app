@@ -42,7 +42,6 @@ export default function Clinics() {
         <View>
           <Text style={styles.userText}>Klinikalar</Text>
         </View>
-
         <FlatList
           data={data}
           numColumns={2}
@@ -59,11 +58,8 @@ export default function Clinics() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    paddingVertical: 20,
     flexDirection: "column",
     gap: 24,
-    width: "100%",
   },
   safeArea: {
     flex: 1,
@@ -93,8 +89,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 4,
-    paddingVertical: 1,
+    paddingHorizontal: 16,
   },
   searchInput: {
     width: 386,
@@ -108,6 +103,7 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 20,
     shadowOpacity: 1,
+    padding: 8,
   },
   searchIconContainer: {
     marginLeft: 10,
@@ -145,11 +141,11 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   columnWrapper: {
+    padding: 12,
     display: "flex",
     justifyContent: "flex-start",
     flexWrap: "wrap",
-    gap: 50,
-    marginBottom: 25,
+    gap: 12,
   },
 
   userHeader: {
@@ -157,14 +153,11 @@ const styles = StyleSheet.create({
     // paddingBottom: 36,
   },
   userText: {
-    width: 133,
-    height: 30,
-    left: 140,
     fontFamily: "Poppins",
     fontSize: 20,
     fontWeight: "600",
     fontStyle: "normal",
-    lineHeight: 20,
     color: "#226D64",
+    textAlign: "center",
   },
 });

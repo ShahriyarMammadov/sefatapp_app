@@ -6,7 +6,6 @@ import {
   FlatList,
   NativeSyntheticEvent,
   NativeTouchEvent,
-  TouchableOpacity,
   GestureResponderEvent,
 } from "react-native";
 import React, { useEffect, useState } from "react";
@@ -45,6 +44,7 @@ const Blog = () => {
       <Header />
       <CustomInput
         placeholderText="Axtaris"
+        iconAfter="Search"{...onPress}
         style={{
           width: 365,
           height: 44,
@@ -61,7 +61,7 @@ const Blog = () => {
         }}
         onPress={handleUpdateInfo}
       />
-    <SvgXml xml={Search} width={50} height={17} />
+   
       
       <View style={styles.container}>
         {loading ? (

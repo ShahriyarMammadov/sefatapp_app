@@ -47,7 +47,7 @@ export default function Doctors() {
             </TouchableOpacity>
           </View>
           <View>
-            <Text style={styles.userText}>Klinikalar</Text>
+            <Text style={styles.userText}>Həkimlər</Text>
           </View>
           <FlatList
             data={data}
@@ -66,7 +66,6 @@ export default function Doctors() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fff",
   },
   content: {
@@ -158,21 +157,21 @@ const styles = StyleSheet.create({
   columnWrapper: {
     justifyContent: "space-between",
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: 16,
+    padding: 12,
   },
   userHeader: {
     // paddingTop: 20,
     // paddingBottom: 36,
   },
   userText: {
-    width: 133,
-    height: 30,
-    left: 140,
+    textAlign: "center",
     fontFamily: "Poppins",
     fontSize: 20,
     fontWeight: "600",
     fontStyle: "normal",
-    lineHeight: 20,
     color: "#226D64",
+    margin: 10,
   },
 });
