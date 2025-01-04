@@ -10,7 +10,6 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import Header from "@/components/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { router } from "expo-router";
 import TabButton from "@/components/TabButton";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";

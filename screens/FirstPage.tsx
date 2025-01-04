@@ -1,8 +1,4 @@
-import {
-  Button,
-  SafeAreaView,
-  StyleSheet,
-} from "react-native";
+import { Button, SafeAreaView, StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { useRouter } from "expo-router";
 import CustomButton from "@/components/CustomButton";
@@ -13,6 +9,11 @@ import Colors from "@/constants/Colors";
 
 export default function FirstPage() {
   const router = useRouter();
+
+  setTimeout(() => {
+    router.replace("/(auth)/guest-page");
+  }, 1500);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -23,13 +24,13 @@ export default function FirstPage() {
         <View style={styles.buttonGroup}>
           <CustomButton
             title=" Həkim kimi daxil ol"
-            onPress={() => router.replace("/(auth)/sign-in")}
+            onPress={() => router.replace("/(auth)/new-doctor")}
           />
           <CustomButton
             title="Pasiyent kimi daxil ol"
-            onPress={() => router.replace("/(auth)/user-patient")}
+            onPress={() => router.replace("/(auth)/guest-page")}
           />
-        
+
           <Button
             title="Qonaq kimi davam et"
             color={Colors.light.green}
@@ -66,5 +67,6 @@ const styles = StyleSheet.create({
   buttonGroup: {
     width: "100%",
     gap: 20,
+    display: "none",
   },
 });

@@ -43,7 +43,7 @@ export default function Doctors() {
               style={styles.searchInput}
             />
             <TouchableOpacity style={styles.iconInsideInput}>
-              <AntDesign name="search1" size={20} color="#0F312D" />
+              <AntDesign name="search1" size={20} />
             </TouchableOpacity>
           </View>
           <View>

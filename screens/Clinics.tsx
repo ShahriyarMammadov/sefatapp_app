@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   TextInput,
+  ScrollView,
 } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
@@ -42,14 +43,16 @@ export default function Clinics() {
         <View>
           <Text style={styles.userText}>Klinikalar</Text>
         </View>
-        <FlatList
-          data={data}
-          numColumns={2}
-          columnWrapperStyle={styles.columnWrapper}
-          renderItem={({ item }: any) => {
-            return <ClinicCard data={item} />;
-          }}
-        />
+        <ScrollView contentContainerStyle={styles.clinicCardContainer}>
+          <FlatList
+            data={data}
+            numColumns={2}
+            columnWrapperStyle={styles.columnWrapper}
+            renderItem={({ item }: any) => {
+              return <ClinicCard data={item} />;
+            }}
+          />
+        </ScrollView>
         <TabMenu />
       </View>
     </SafeAreaView>
@@ -57,6 +60,9 @@ export default function Clinics() {
 }
 
 const styles = StyleSheet.create({
+  clinicCardContainer: {
+    marginBlockEnd: 40,
+  },
   container: {
     flexDirection: "column",
     gap: 24,

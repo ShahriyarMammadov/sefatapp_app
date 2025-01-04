@@ -224,6 +224,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     width: "100%",
     bottom: 0,
+    marginBottom: 50,
   },
   footerText: {
     color: "#FFFFFF",

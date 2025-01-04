@@ -26,6 +26,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLoginMutation } from "@/store/appSlice";
 import { StatusBar } from "expo-status-bar";
+import TabMenu from "@/components/TabMenu";
 
 interface LoginResponse {
   access_token: string;
@@ -175,9 +176,9 @@ const SignIn: React.FC = () => {
             </View>
             <CustomButton
               title="Daxil ol"
-              // onPress={handleSignIn}
+              onPress={handleSignIn}
               loading={isLoading}
-              onPress={() => router.replace("/(auth)/new-doctor")}
+              // onPress={() => router.replace("/(auth)/new-doctor")}
             />
             <Text style={styles.orText}>və ya</Text>
             <View style={styles.btnsGroup}>
@@ -221,6 +222,7 @@ const SignIn: React.FC = () => {
           )}
         </View>
       </TouchableWithoutFeedback>
+      <TabMenu/>
     </SafeAreaView>
   );
 };

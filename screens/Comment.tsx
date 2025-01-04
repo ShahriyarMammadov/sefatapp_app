@@ -13,6 +13,10 @@ import Header from "@/components/Header";
 import { doctors } from "@/constants/DoctorsData";
 import { StarIcon } from "@/assets/svg/aysun";
 import { SvgXml } from "react-native-svg";
+import TabMenu from "@/components/TabMenu";
+import BurgerMenu from "@/components/Burger";
+import { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
 
 const reviews = [
   {
@@ -59,6 +63,7 @@ const reviews = [
 
 const BlogDetail = () => {
   const selectedDoctor = doctors.find((item: any) => item.id === 1);
+  const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
 
   const renderReview = ({ item }: any) => (
     <View style={styles.card}>
@@ -101,6 +106,7 @@ const BlogDetail = () => {
           </View>
         </ScrollView>
       </View>
+      <TabMenu />
     </SafeAreaView>
   );
 };
@@ -173,6 +179,7 @@ const styles = StyleSheet.create({
   },
   reviewSection: {
     marginTop: 20,
+    marginBottom: 40,
   },
 });
 

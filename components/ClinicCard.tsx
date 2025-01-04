@@ -29,7 +29,7 @@ const ClinicCard = ({ data }: any) => {
         </Pressable> */}
       </View>
       <View style={styles.infoContainer}>
-        <Text style={styles.addressText}>Ünvan: {data.location.address}</Text>
+        <Text style={styles.addressText} numberOfLines={2} ellipsizeMode="tail">Ünvan: {data.location.address}</Text>
         <View style={styles.ratingContainer}>
           <View style={styles.starsContainer}>
             {[...Array(fullStars)].map((_, index) => (
@@ -77,8 +77,11 @@ export default ClinicCard;
 
 const styles = StyleSheet.create({
   clinicContainer: {
+    width: 170,
+    borderWidth: 1,
+    borderColor: "#E9F0F0",
+    position: "relative",
     padding: 12,
-    height: 270,
     borderRadius: 20,
     backgroundColor: "#FFFFFF",
     shadowColor: "rgba(0, 0, 0, 0.14)",
@@ -105,14 +108,6 @@ const styles = StyleSheet.create({
     right: 4,
     zIndex: 10,
   },
-  clinicNameContainer: {
-    paddingBlock: 8,
-    paddingInline: 8,
-    backgroundColor: "#E9F0F0",
-    alignItems: "center",
-    marginBlockStart: 8,
-    marginBlockEnd: 8,
-  },
   clinicName: {
     color: "#226D64",
     fontWeight: "500",
@@ -122,8 +117,8 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   addressText: {
-    width: 150,
     color: "#0F312D",
+    fontSize: 12,
   },
   ratingContainer: {
     flexDirection: "row",
@@ -166,15 +161,11 @@ const styles = StyleSheet.create({
     paddingBlockEnd: 8,
   },
   text: {
-    width: 66,
-    height: 17,
-    top: 9,
-    left: 35,
     fontFamily: "Poppins",
-    fontSize: 11.51857852935791,
+    fontSize: 12,
     fontWeight: "500",
     fontStyle: "normal",
-    lineHeight: 11.51857852935791,
     color: "#000000",
+    textAlign: "center",
   },
 });

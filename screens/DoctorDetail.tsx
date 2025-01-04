@@ -16,6 +16,15 @@ import CustomButton from "@/components/CustomButton";
 import Header from "@/components/Header";
 import UserHeader from "@/components/UserHeader";
 import { doctors } from "@/constants/DoctorsData";
+import { SvgXml } from "react-native-svg";
+import {
+  Medicalfiles,
+  Profileicon,
+  analysis,
+  calendaroutline,
+} from "@/assets/svg/aysun";
+import SvgIcon from "@/components/SvgIcon";
+import TabMenu from "@/components/TabMenu";
 
 const reviews = [
   {
@@ -39,20 +48,6 @@ const reviews = [
       "Lorem ipsum dolor sit amet consectetur. At pretium turpis egestas vitae. Urna elit arcu et sagittis nisl. Id volutpat feugiat egestas orci facilisis blandit. Vitae suspendisse blandit interdum phasellus.",
     image: require("@/assets/images/patient3.png"),
   },
-  {
-    id: "4",
-    name: "Nargiz",
-    review:
-      "Lorem ipsum dolor sit amet consectetur. At pretium turpis egestas vitae. Urna elit arcu et sagittis nisl. Id volutpat feugiat egestas orci facilisis blandit. Vitae suspendisse blandit interdum phasellus.",
-    image: require("@/assets/images/patient4.png"),
-  },
-  {
-    id: "5",
-    name: "Menzi",
-    review:
-      "Lorem ipsum dolor sit amet consectetur. At pretium turpis egestas vitae. Urna elit arcu et sagittis nisl. Id volutpat feugiat egestas orci facilisis blandit. Vitae suspendisse blandit interdum phasellus.",
-    image: require("@/assets/images/patient5.png"),
-  },
 ];
 
 const BlogDetail = () => {
@@ -71,11 +66,8 @@ const BlogDetail = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <Header />
-
       <View style={styles.container}>
-        <View style={styles.userHeader}>
-          <UserHeader />
-        </View>
+        <View style={styles.userHeader}></View>
         <ScrollView
           contentContainerStyle={styles.scrollContainer}
           showsVerticalScrollIndicator={false}
@@ -87,48 +79,54 @@ const BlogDetail = () => {
                 source={require("@/assets/images/doctor.png")}
               />
             </View>
-            <View style={styles.btnsGroup}>
-              <Text style={styles.titleText}>Uzman Dr.Jalə</Text>
-              <CustomButton
-                title="Resept yazdır"
-                buttonStyles={styles.btn}
-                textStyles={styles.btnText}
-              />
-              <CustomButton
-                title="Analiz cavabımı yoxla"
-                buttonStyles={styles.btn}
-                textStyles={styles.btnText}
-              />
-              <CustomButton
-                title="Rezervasiya təyin et"
-                buttonStyles={styles.btn}
-                textStyles={styles.btnText}
-              />
-            </View>
           </View>
-          <Text style={styles.title}>Reyting: </Text>
-          <Text style={styles.Text}>İxtisas: Psixoloq</Text>
-          <Text style={styles.title}>Xəstəxana: Baku Medical Center</Text>
+          <Text style={styles.title}>Dr. Jenny Wilson </Text>
+          <SvgIcon />
+          <Text style={styles.text}>Xidmətlər</Text>
+
+          {/* <Text style={styles.title}>Xəstəxana: Baku Medical Center</Text>
           <Text style={styles.title}>
             Haqqında: Lorem ipsum dolor sit amet consectetur. Nisl leo laoreet
             cursus dis tellus amet nec sit. In sed enim quis suspendisse porta
             sit quis arcu amet. Sed accumsan eget at pulvinar. Enim erat
             consectetur sapien congue. Non pharetra iaculis vel faucibus amet
             suscipit a et. Urna diam nisl ipsum massa duis praesen
-          </Text>
+          </Text> */}
 
-          <View style={styles.total}>
+          {/* <View style={styles.total}>
             <Text style={styles.totalText}>Resept Yazdır:</Text>
             <Text style={styles.totalText}>Analiz cavabını yoxla: 50 azn</Text>
             <Text style={styles.totalText}>Rezervasiya təyin et: 50 azn</Text>
-          </View>
-          <View
+          </View> */}
+          {/* <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
             <Text style={styles.Word}>Sertifikatlar</Text>
             <Text style={styles.Word}>Portfolio</Text>
+          </View> */}
+          <View style={styles.cardsRow}>
+            <View style={styles.xidmetCard}>
+              <Pressable style={styles.cardContent}>
+                <SvgXml xml={Medicalfiles} />
+                <Text style={styles.cardPrice}>50 azn</Text>
+              </Pressable>
+              <Text style={styles.sendButtonText}>Resept yazdır</Text>
+            </View>
+            <View style={styles.xidmetCard}>
+              <Pressable style={styles.cardContent}>
+                <SvgXml xml={analysis} />
+                <Text style={styles.cardPrice}>50 azn</Text>
+              </Pressable>
+              <Text style={styles.sendButtonText}>Analiz cavabını yoxla</Text>
+            </View>
+            <View style={styles.xidmetCard}>
+              <Pressable style={styles.cardContent}>
+                <SvgXml xml={calendaroutline} />
+                <Text style={styles.cardPrice}>50 azn</Text>
+              </Pressable>
+              <Text style={styles.sendButtonText}>Rezervasiya təyin et</Text>
+            </View>
           </View>
-
           <View style={styles.reviewSection}>
             <Text style={styles.reviewTitle}>Rəyiniz</Text>
             <View style={styles.inputContainer}>
@@ -137,9 +135,6 @@ const BlogDetail = () => {
                 placeholder="Rəyinizi əlavə edin.."
                 multiline
               />
-              <Pressable style={styles.sendButton}>
-                <Text style={styles.sendButtonText}>Göndər</Text>
-              </Pressable>
             </View>
             <FlatList
               data={reviews}
@@ -147,12 +142,8 @@ const BlogDetail = () => {
               keyExtractor={(item) => item.id}
             />
           </View>
-          <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-            <Pressable style={styles.sendButton}>
-              <Text style={styles.sendButtonText}>Hamısını gör</Text>
-            </Pressable>
-          </View>
         </ScrollView>
+        <TabMenu />
       </View>
     </SafeAreaView>
   );
@@ -163,16 +154,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
+  scrollContainer: {
+    paddingBlockEnd: 100,
+  },
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-  },
-  scrollContainer: {
-    flexGrow: 1,
-    gap: 16,
+    paddingHorizontal: 8,
   },
   userHeader: {
-    paddingTop: 20,
+    paddingTop: 0,
     paddingBottom: 36,
   },
   dooctorTop: {
@@ -182,13 +172,13 @@ const styles = StyleSheet.create({
   },
   dooctorImgBox: {
     overflow: "hidden",
-    borderRadius: 0,
     height: 251,
   },
   dooctorImg: {
-    width: 181,
-    height: "100%",
-    resizeMode: "cover",
+    width: 375,
+    height: 300.501220703125,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   btnsGroup: {
     flex: 1,
@@ -205,12 +195,15 @@ const styles = StyleSheet.create({
     ...typography.subhead400,
   },
   title: {
-    ...typography.headline400,
-    color: Colors.light.green,
+    ...typography.titleMedium700,
+    color: "black",
+    fontWeight: "600",
   },
-  Text: {
-    ...typography.subhead700,
-    color: Colors.light.green,
+  text: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: "#101010",
+    marginBlock: 16,
   },
   titleText: {
     ...typography.titleSmall700,
@@ -229,7 +222,6 @@ const styles = StyleSheet.create({
   Word: {
     ...typography.headline500,
   },
-
   reviewSection: {
     marginTop: 20,
   },
@@ -255,16 +247,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: "#f3f1ec",
     marginRight: 10,
-  },
-  sendButton: {
-    backgroundColor: "#2d675d",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 30,
-  },
-  sendButtonText: {
-    color: "#fff",
-    fontWeight: "bold",
   },
   reviewContainer: {
     flexDirection: "row",
@@ -294,6 +276,44 @@ const styles = StyleSheet.create({
   },
   value: {
     ...typography.headline700,
+  },
+  cardsRow: {
+    flexDirection: "row",
+    gap: 8,
+  },
+  xidmetCard: {
+    flex: 1,
+    padding: 8,
+    backgroundColor: "#248C76",
+    borderRadius: 14,
+    shadowColor: "rgba(0, 0, 0, 0.09)",
+    shadowOffset: {
+      width: 1,
+      height: 2,
+    },
+    shadowRadius: 8,
+    shadowOpacity: 1,
+  },
+  cardContent: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    columnGap: 8,
+  },
+  sendButtonText: {
+    fontFamily: "Poppins",
+    fontSize: 12,
+    fontWeight: "700",
+    fontStyle: "normal",
+    color: "#FFFFFF",
+    marginTop: 8,
+  },
+  cardPrice: {
+    fontFamily: "Poppins",
+    fontSize: 12,
+    fontWeight: "700",
+    fontStyle: "normal",
+    color: "#FFFFFF",
+    marginTop: 8,
   },
 });
 

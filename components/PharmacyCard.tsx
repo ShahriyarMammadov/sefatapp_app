@@ -21,7 +21,7 @@ const PharmacyCard = ({ data }: any) => {
           <AntDesign name="hearto" size={15} color="black" />
         </View>
         <View style={styles.availableText}>
-          <Text>7/24</Text>
+          <Text style={styles.availableTextContent}>7/24</Text>
         </View>
         <Pressable
           onPress={() => router.replace(`/pharmacies/${data.id}`)}
@@ -56,41 +56,47 @@ export default PharmacyCard;
 
 const styles = StyleSheet.create({
   clinicContainer: {
+    width: 155,
     padding: 8,
     borderRadius: 20,
     backgroundColor: "#FFFFFF",
     shadowColor: "rgba(0, 0, 0, 0.14)",
     shadowOffset: {
       width: 3,
-      height: 3
+      height: 3,
     },
     shadowRadius: 21.399999618530273,
-    shadowOpacity: 1
+    shadowOpacity: 1,
+    borderColor: "#ccc",
+    borderWidth: 1,
   },
   imageContainer: {
     position: "relative",
   },
   image: {
     width: 100,
-    top:3,
+    top: 3,
     height: 100,
     borderRadius: 50,
-    left: 29,
+    left: 27,
   },
   heartIcon: {
     position: "absolute",
-    top: 8,
-    right: 8,
+    top: 4,
+    right: 4,
   },
   availableText: {
     position: "absolute",
-    top: 8,
-    left: 8,
+    top: 4,
+    left: 4,
+  },
+  availableTextContent: {
+    fontSize: 12,
   },
   clinicNameContainer: {
     width: 148,
     height: 24,
-    top:6,
+    top: 6,
     backgroundColor: "#E9F0F0",
     paddingVertical: 1,
     alignItems: "center",
@@ -121,13 +127,13 @@ const styles = StyleSheet.create({
     paddingInline: 16,
     borderRadius: 10,
     backgroundColor: "#226D64",
-    margin: 'auto'
+    margin: "auto",
   },
   shopButtonText: {
     fontFamily: "Poppins",
     fontWeight: "400",
     fontStyle: "normal",
     fontSize: 14,
-    color: "#FFFFFF"
+    color: "#FFFFFF",
   },
 });

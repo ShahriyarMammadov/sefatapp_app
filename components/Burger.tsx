@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { SCREEN_WIDTH } from "@/constants/Screen";
 import {
   AboutIcon,
@@ -26,13 +26,13 @@ import { router } from "expo-router";
 
 const BurgerMenu = () => {
   const dispatch = useDispatch();
-  const menuItems = [
+
+  const mainMenuItems = [
     {
-      label: "Həkimlərimiz",
+      label: "Ana səhifə",
       url: "/(auth)/patient",
       icon: <SvgXml xml={DoctorIcon} />,
     },
-
     {
       label: "Rezervasiyalarım",
       url: "/(auth)/reserve-3",
@@ -55,12 +55,12 @@ const BurgerMenu = () => {
     },
     {
       label: "Favoritlərim",
-      url: "/(auth)/delet4-rezerv",
+      url: "/(auth)/patient-fav",
       icon: <SvgXml xml={Fav} />,
     },
     {
       label: "Sifarişlərim",
-      url: "/(auth)/buy-analysis",
+      url: "/",
       icon: <SvgXml xml={Order} />,
     },
     {
@@ -70,8 +70,8 @@ const BurgerMenu = () => {
     },
     {
       label: "Dil seçimi",
-      url: "/(auth)/buy-rezerv",
       icon: <SvgXml xml={Language} />,
+      isLanguageSelector: true,
     },
     {
       label: "Çıxış et",
@@ -79,6 +79,17 @@ const BurgerMenu = () => {
       icon: <SvgXml xml={OutputIcon} />,
     },
   ];
+
+  const langMenuItems = [
+    { label: "Azərbaycan", url: "", icon: <View />, language: "az" },
+    { label: "Русский", url: "", icon: <View />, language: "ru" },
+    { label: "English", url: "", icon: <View />, language: "en" },
+  ];
+
+  // State to manage which menu to display
+  const [menuItems, setMenuItems] = useState(mainMenuItems);
+  const [selectedLanguage, setSelectedLanguage] = useState("az"); // Default dil: Azərbaycan
+
   return (
     <>
       <Pressable
@@ -90,8 +101,15 @@ const BurgerMenu = () => {
           <TouchableOpacity
             key={index}
             onPress={() => {
-              router.push(item.url);
-              dispatch(closeBurger());
+              if (item.isLanguageSelector) {
+                setMenuItems(langMenuItems);
+              } else if (item.language) {
+                setSelectedLanguage(item.language);
+                setMenuItems(mainMenuItems);
+              } else if (item.url) {
+                router.push(item.url);
+                dispatch(closeBurger());
+              }
             }}
             style={styles.menuItemContainer}
           >

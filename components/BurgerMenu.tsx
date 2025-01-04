@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from "@/constants/Screen";
 import {
   AboutIcon,
@@ -24,7 +24,7 @@ import { router } from "expo-router";
 
 const BurgerMenu = () => {
   const dispatch = useDispatch();
-  const menuItems = [
+  const mainMenuItems = [
     {
       label: "Ana Səhifə",
       url: "/(auth)/patient",
@@ -58,7 +58,7 @@ const BurgerMenu = () => {
     },
     {
       label: "Dil seçimi",
-      url: "/(auth)/delet2-comment",
+      isLanguageSelector: true,
       icon: <SvgXml xml={ContactIcon} />,
     },
     {
@@ -71,8 +71,17 @@ const BurgerMenu = () => {
   useEffect(() => {
     return () => {
       dispatch(closeBurger());
-    }
+    };
   }, [router]);
+  const langMenuItems = [
+    { label: "Azərbaycan", url: "", icon: <View />, language: "az" },
+    { label: "Русский", url: "", icon: <View />, language: "ru" },
+    { label: "English", url: "", icon: <View />, language: "en" },
+  ];
+
+  // State to manage which menu to display
+  const [menuItems, setMenuItems] = useState(mainMenuItems);
+  const [selectedLanguage, setSelectedLanguage] = useState("az"); // Default dil: Azərbaycan
 
   return (
     <>
@@ -85,8 +94,15 @@ const BurgerMenu = () => {
           <TouchableOpacity
             key={index}
             onPress={() => {
-              router.push(item.url);
-              dispatch(closeBurger());
+              if (item.isLanguageSelector) {
+                setMenuItems(langMenuItems);
+              } else if (item.language) {
+                setSelectedLanguage(item.language);
+                setMenuItems(mainMenuItems);
+              } else if (item.url) {
+                router.push(item.url);
+                dispatch(closeBurger());
+              }
             }}
             style={styles.menuItemContainer}
           >
@@ -107,7 +123,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     width: SCREEN_WIDTH,
-    height:  "100%",
+    height: "100%",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     zIndex: 999,
   },
@@ -115,7 +131,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    height:  "100%",
+    height: "100%",
     width: SCREEN_WIDTH * 0.7,
     backgroundColor: "#fff",
     paddingVertical: 20,

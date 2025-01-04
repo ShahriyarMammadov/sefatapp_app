@@ -12,11 +12,21 @@ import Header from "@/components/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
+import TabMenu from "@/components/TabMenu";
+import BurgerMenu from "@/components/Burger";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+
 
 const ProfileScreen = () => {
+  const isBurgerOpen = useSelector((state: RootState) => state.burger.value);
+
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container}
+       contentContainerStyle={styles.content}>
+      {isBurgerOpen ? <BurgerMenu /> : null}
+
         <Header />
         <Text style={styles.greeting}>Salam, Dr. Walter</Text>
         <View style={styles.main}>
@@ -65,6 +75,7 @@ const ProfileScreen = () => {
           />
         </View>
       </ScrollView>
+      <TabMenu/>
     </SafeAreaView>
   );
 };
@@ -157,6 +168,10 @@ const styles = StyleSheet.create({
   },
   main: {
     paddingHorizontal: 16,
+    marginBottom: 60,
+  },
+  content: {
+    paddingBottom: 80,
   },
 });
 
